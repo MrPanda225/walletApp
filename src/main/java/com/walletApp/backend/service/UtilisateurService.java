@@ -1,0 +1,8 @@
+package com.walletApp.backend.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UtilisateurService {
+
+}
