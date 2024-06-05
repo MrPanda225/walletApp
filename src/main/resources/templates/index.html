@@ -1,1 +1,1500 @@
-test
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from mophy.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2024 15:45:18 GMT -->
+<head>
+    <!--Title-->
+    <title>Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="DexignZone">
+    <meta name="robots" content="index, follow">
+
+    <meta name="keywords" content="Mophy, Payment Admin Dashboard, Bootstrap Template, FrontEnd, Web Application, Payment Management, Responsive Design, User Experience, Customizable, Modern UI, Dashboard Template, Admin Panel, Bootstrap 4, HTML5, CSS3, JavaScript, Finance, Payment Gateway, Admin Template, UI Kit, SASS, SCSS, CRM, Analytics, Responsive Dashboard, responsive admin dashboard, sales dashboard, ui kit, web app, Admin Dashboard, Template, Admin, CMS pages, Authentication, FrontEnd Integration, Web Application UI, Bootstrap Framework, User Interface Kit, Financial Dashboard, SASS Integration, Customizable Template, Payment Gateway, HTML5/CSS3, CRM Dashboard, Analytics Dashboard, Admin Dashboard UI, Mobile-Friendly Design, UI Components, Dashboard Widgets, Dashboard Framework, Data Visualization, User Experience (UX), Dashboard Widgets, Real-time Analytics, Cross-Browser Compatibility, Interactive Charts, Payment Processing, Performance Optimization, Multi-Purpose Template, Efficient Admin Tools, Task Management, Modern Web Technologies, Payment Tracking, Responsive Tables, Dashboard Widgets, Invoice Management, Access Control, Modular Design, Payment History, Trend Analysis, User-Friendly Interface">
+
+    <meta name="description" content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+
+    <meta property="og:title" content="Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone">
+    <meta property="og:description" content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+    <meta property="og:image" content="social-image.png">
+
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="twitter:title" content="Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone">
+    <meta name="twitter:description" content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+    <meta name="twitter:image" content="social-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
+    <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <link href="vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/chartist/css/chartist.min.css">
+    <!-- Vectormap -->
+    <link href="vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link class="main-css" href="css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<!--*******************
+    Preloader start
+********************-->
+<div id="preloader">
+    <div class="sk-three-bounce">
+        <div class="sk-child sk-bounce1"></div>
+        <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
+    </div>
+</div>
+<!--*******************
+    Preloader end
+********************-->
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
+
+    <!--**********************************
+        Nav header start
+    ***********************************-->
+    <div class="nav-header">
+        <a href="index.html" class="brand-logo">
+            <img class="logo-abbr" src="images/logo.png" alt="">
+            <img class="logo-compact" src="images/logo-text.png" alt="">
+            <img class="brand-title" src="images/logo-text.png" alt="">
+        </a>
+
+        <div class="nav-control">
+            <div class="hamburger">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Nav header end
+    ***********************************-->
+
+    <!--**********************************
+        Chat box start
+    ***********************************-->
+    <div class="chatbox">
+        <div class="chatbox-close"></div>
+        <div class="custom-tab-1">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#notes">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#alerts">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#chat">Chat</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="chat" role="tabpanel">
+                    <div class="card mb-sm-3 mb-md-0 contacts_card dz-chat-user-box">
+                        <div class="card-header chat-list-header text-center">
+                            <a href="javascript:void(0)"><svg xmlns="/www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3"
+                                          transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
+                                          x="4" y="11" width="16" height="2" rx="1" />
+                                </g>
+                            </svg></a>
+                            <div>
+                                <h6 class="mb-1">Chat List</h6>
+                                <p class="mb-0">Show All</p>
+                            </div>
+                            <a href="javascript:void(0)"><svg xmlns="../../www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" cx="5" cy="12" r="2" />
+                                    <circle fill="#000000" cx="12" cy="12" r="2" />
+                                    <circle fill="#000000" cx="19" cy="12" r="2" />
+                                </g>
+                            </svg></a>
+                        </div>
+                        <div class="card-body contacts_body p-0 dz-scroll  " id="DZ_W_Contacts_Body">
+                            <ul class="contacts">
+                                <li class="name-first-letter">A</li>
+                                <li class="active dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Archie Parker</span>
+                                            <p>Kalid is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Alfie Mason</span>
+                                            <p>Taherah left 7 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>AharlieKane</span>
+                                            <p>Sami is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Athan Jacoby</span>
+                                            <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">B</li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Bashid Samim</span>
+                                            <p>Rashid left 50 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Breddie Ronan</span>
+                                            <p>Kalid is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Ceorge Carson</span>
+                                            <p>Taherah left 7 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">D</li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Darry Parker</span>
+                                            <p>Sami is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Denry Hunter</span>
+                                            <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">J</li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Jack Ronan</span>
+                                            <p>Rashid left 50 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Jacob Tucker</span>
+                                            <p>Kalid is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>James Logan</span>
+                                            <p>Taherah left 7 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Joshua Weston</span>
+                                            <p>Sami is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">O</li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Oliver Acker</span>
+                                            <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dz-chat-user">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont">
+                                            <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>Oscar Weston</span>
+                                            <p>Rashid left 50 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card chat dz-chat-history-box d-none">
+                        <div class="card-header chat-list-header text-center">
+                            <a href="javascript:void(0)" class="dz-chat-history-back">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="../../www.w3.org/1999/xlink.html"
+                                     width="1.125rem" height="1.125rem" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                        <rect fill="#000000" opacity="0.3"
+                                              transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
+                                              x="14" y="7" width="2" height="10" rx="1" />
+                                        <path
+                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                                                fill="#000000" fill-rule="nonzero"
+                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
+                                    </g>
+                                </svg>
+                            </a>
+                            <div>
+                                <h6 class="mb-1">Chat with Khelesh</h6>
+                                <p class="mb-0 text-success">Online</p>
+                            </div>
+                            <div class="dropdown">
+                                <a href="javascript:void(0)" data-bs-toggle="dropdown"><svg
+                                        xmlns="../../www.w3.org/2000/svg.html"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem"
+                                        height="1.125rem" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <circle fill="#000000" cx="5" cy="12" r="2" />
+                                        <circle fill="#000000" cx="12" cy="12" r="2" />
+                                        <circle fill="#000000" cx="19" cy="12" r="2" />
+                                    </g>
+                                </svg></a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li class="dropdown-item"><i class="fa fa-user-circle text-primary me-2"></i>
+                                        View profile</li>
+                                    <li class="dropdown-item"><i class="fa fa-users text-primary me-2"></i> Add to
+                                        close friends</li>
+                                    <li class="dropdown-item"><i class="fa fa-plus text-primary me-2"></i> Add to
+                                        group</li>
+                                    <li class="dropdown-item"><i class="fa fa-ban text-primary me-2"></i> Block</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    Hi, how are you samim?
+                                    <span class="msg_time">8:40 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    Hi Khalid i am good tnx how about you?
+                                    <span class="msg_time_send">8:55 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    I am good too, thank you for your chat template
+                                    <span class="msg_time">9:00 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    You are welcome
+                                    <span class="msg_time_send">9:05 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    I am looking for your next templates
+                                    <span class="msg_time">9:07 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    Ok, thank you have a good day
+                                    <span class="msg_time_send">9:10 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    Bye, see you
+                                    <span class="msg_time">9:12 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    Hi, how are you samim?
+                                    <span class="msg_time">8:40 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    Hi Khalid i am good tnx how about you?
+                                    <span class="msg_time_send">8:55 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    I am good too, thank you for your chat template
+                                    <span class="msg_time">9:00 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    You are welcome
+                                    <span class="msg_time_send">9:05 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    I am looking for your next templates
+                                    <span class="msg_time">9:07 AM, Today</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mb-4">
+                                <div class="msg_cotainer_send">
+                                    Ok, thank you have a good day
+                                    <span class="msg_time_send">9:10 AM, Today</span>
+                                </div>
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start mb-4">
+                                <div class="img_cont_msg">
+                                    <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                </div>
+                                <div class="msg_cotainer">
+                                    Bye, see you
+                                    <span class="msg_time">9:12 AM, Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer type_msg">
+                            <div class="input-group">
+                                <textarea class="form-control" placeholder="Type your message..."></textarea>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-primary"><i
+                                            class="fa fa-location-arrow"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="alerts" role="tabpanel">
+                    <div class="card mb-sm-3 mb-md-0 contacts_card">
+                        <div class="card-header chat-list-header text-center">
+                            <a href="javascript:void(0)"><svg xmlns="../../www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" cx="5" cy="12" r="2" />
+                                    <circle fill="#000000" cx="12" cy="12" r="2" />
+                                    <circle fill="#000000" cx="19" cy="12" r="2" />
+                                </g>
+                            </svg></a>
+                            <div>
+                                <h6 class="mb-1">Notications</h6>
+                                <p class="mb-0">Show All</p>
+                            </div>
+                            <a href="javascript:void(0)"><svg xmlns="../../www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path
+                                            d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
+                                            fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path
+                                            d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
+                                            fill="#000000" fill-rule="nonzero" />
+                                </g>
+                            </svg></a>
+                        </div>
+                        <div class="card-body contacts_body p-0 dz-scroll" id="DZ_W_Contacts_Body1">
+                            <ul class="contacts">
+                                <li class="name-first-letter">SEVER STATUS</li>
+                                <li class="active">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont primary">KK</div>
+                                        <div class="user_info">
+                                            <span>David Nester Birthday</span>
+                                            <p class="text-primary">Today</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">SOCIAL</li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont success">RU<i class="icon fa-birthday-cake"></i></div>
+                                        <div class="user_info">
+                                            <span>Perfection Simplified</span>
+                                            <p>Jame Smith commented on your status</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="name-first-letter">SEVER STATUS</li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont primary">AU<i class="icon fa fa-user-plus"></i></div>
+                                        <div class="user_info">
+                                            <span>AharlieKane</span>
+                                            <p>Sami is online</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="img_cont info">MO<i class="icon fa fa-user-plus"></i></div>
+                                        <div class="user_info">
+                                            <span>Athan Jacoby</span>
+                                            <p>Nargis left 30 mins ago</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="notes">
+                    <div class="card mb-sm-3 mb-md-0 note_card">
+                        <div class="card-header chat-list-header text-center">
+                            <a href="javascript:void(0)"><svg xmlns="../../www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
+                                    <rect fill="#000000" opacity="0.3"
+                                          transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
+                                          x="4" y="11" width="16" height="2" rx="1" />
+                                </g>
+                            </svg></a>
+                            <div>
+                                <h6 class="mb-1">Notes</h6>
+                                <p class="mb-0">Add New Nots</p>
+                            </div>
+                            <a href="javascript:void(0)"><svg xmlns="../../www.w3.org/2000/svg.html"
+                                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="1.125rem" height="1.125rem"
+                                                              viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <path
+                                            d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
+                                            fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                    <path
+                                            d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
+                                            fill="#000000" fill-rule="nonzero" />
+                                </g>
+                            </svg></a>
+                        </div>
+                        <div class="card-body contacts_body p-0 dz-scroll" id="DZ_W_Contacts_Body2">
+                            <ul class="contacts">
+                                <li class="active">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="user_info">
+                                            <span>New order placed..</span>
+                                            <p>10 Aug 2020</p>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-primary btn-xs sharp me-1"><i
+                                                    class="fas fa-pencil-alt"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-xs sharp"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="user_info">
+                                            <span>Youtube, a video-sharing website..</span>
+                                            <p>10 Aug 2020</p>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-primary btn-xs sharp me-1"><i
+                                                    class="fas fa-pencil-alt"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-xs sharp"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="user_info">
+                                            <span>john just buy your product..</span>
+                                            <p>10 Aug 2020</p>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-primary btn-xs sharp me-1"><i
+                                                    class="fas fa-pencil-alt"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-xs sharp"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="user_info">
+                                            <span>Athan Jacoby</span>
+                                            <p>10 Aug 2020</p>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)"
+                                               class="btn btn-primary btn-xs sharp me-1"><i
+                                                    class="fas fa-pencil-alt"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-danger btn-xs sharp"><i
+                                                    class="fa fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Chat box End
+    ***********************************-->
+
+    <!--**********************************
+        Header start
+    ***********************************-->
+    <div th:replace="component/header"></div>
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div th:replace="component/sidebar"></div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body default-height">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="form-head mb-4">
+                <h2 class="text-black font-w600 mb-0">Dashboard</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8 my-3">
+                            <div class="card-bx mb-0">
+                                <img src="images/card/card1.png" alt="">
+                                <div class="card-info text-white">
+                                    <p class="mb-1">Main Balance</p>
+                                    <h2 class="fs-36 text-white mb-sm-4 mb-3">$673,412.66</h2>
+                                    <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
+                                        <img src="images/dual-dot.png" alt="" class="dot-img">
+                                        <h4 class="fs-20 text-white mb-0">**** **** **** 1234</h4>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="me-5">
+                                            <p class="fs-14 mb-1 op6">VALID THRU</p>
+                                            <span>08/21</span>
+                                        </div>
+                                        <div>
+                                            <p class="fs-14 mb-1 op6">CARD HOLDER</p>
+                                            <span>Franklin Jr.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-header d-block d-sm-flex border-0">
+                                    <div class="me-3">
+                                        <h4 class="fs-20 text-black">Previous Transactions</h4>
+                                    </div>
+                                    <div class="card-action card-tabs d-inline-block mt-3 mt-sm-0">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#monthly"
+                                                   role="tab">Monthly</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#Weekly"
+                                                   role="tab">Weekly</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#Today"
+                                                   role="tab">Today</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body tab-content p-0">
+                                    <div class="tab-pane active show fade" id="monthly" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table
+                                                    class="table table-responsive-md card-table previous-transactions">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip0)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">XYZ Store ID</a></h6>
+                                                        <span class="fs-14">Cashback</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip1)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip1">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Chef Renata</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-warning fs-16 font-w500 text-end d-block">Pending</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip2)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip2">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Cindy Alexandro</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-danger fs-16 font-w500 text-end d-block">Canceled</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip7)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip7">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Paipal</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip3)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip3">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Hawkins Jr.</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-danger fs-16 font-w500 text-end d-block">Canceled</span>
+                                                    </td>
+                                                </tr>
+                                                <tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="Weekly" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip9)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip9">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">XYZ Store ID</a></h6>
+                                                        <span class="fs-14">Cashback</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip10)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip10">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Chef Renata</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-warning fs-16 font-w500 text-end d-block">Pending</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip4)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip4">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Cindy Alexandro</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-danger fs-16 font-w500 text-end d-block">Canceled</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip9)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip11">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">XYZ Store ID</a></h6>
+                                                        <span class="fs-14">Cashback</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip10)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip12">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Chef Renata</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-warning fs-16 font-w500 text-end d-block">Pending</span>
+                                                    </td>
+                                                </tr>
+                                                <tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="Today" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip5)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip13">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Paipal</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip6)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip14">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Hawkins Jr.</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-danger fs-16 font-w500 text-end d-block">Canceled</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip10)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip15">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Chef Renata</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 5, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-warning fs-16 font-w500 text-end d-block">Pending</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1.00002" y="1" width="61" height="61"
+                                                                  rx="29" stroke="#2BC155" stroke-width="2" />
+                                                            <g clip-path="url(#clip9)">
+                                                                <path
+                                                                        d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z"
+                                                                        fill="#2BC155" />
+                                                                <path
+                                                                        d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z"
+                                                                        fill="#2BC155" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip16">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="matrix(-4.37114e-08 1 1 4.37114e-08 17 17)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">XYZ Store ID</a></h6>
+                                                        <span class="fs-14">Cashback</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">+$5,553</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-success fs-16 font-w500 text-end d-block">Completed</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <svg width="63" height="63" viewBox="0 0 63 63"
+                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                            <rect x="1" y="1" width="61" height="61" rx="29"
+                                                                  stroke="#FF2E2E" stroke-width="2" />
+                                                            <g clip-path="url(#clip3)">
+                                                                <path
+                                                                        d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z"
+                                                                        fill="#FF2E2E" />
+                                                                <path
+                                                                        d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z"
+                                                                        fill="#FF2E2E" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip17">
+                                                                    <rect width="28" height="28" fill="white"
+                                                                          transform="translate(17 45) rotate(-90)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 font-w600 mb-0"><a
+                                                                href="transactions-details.html"
+                                                                class="text-black">Hawkins Jr.</a></h6>
+                                                        <span class="fs-14">Transfer</span>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="fs-16 text-black font-w400 mb-0">June 4, 2023
+                                                        </h6>
+                                                        <span class="fs-14">05:34</span>
+                                                    </td>
+                                                    <td><span class="fs-16 text-black font-w500">-$167</span>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-danger fs-16 font-w500 text-end d-block">Canceled</span>
+                                                    </td>
+                                                </tr>
+                                                <tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+
+    <!--**********************************
+        Footer start
+    ***********************************-->
+    <div class="footer">
+        <div class="copyright">
+            <p>Copyright © Designed &amp; Developed by <a href="../../dexignzone.com/index.html"
+                                                          target="_blank">DexignZone</a> 2023</p>
+        </div>
+    </div>
+    <!--**********************************
+        Footer end
+    ***********************************-->
+
+    <!--**********************************
+       Support ticket button start
+    ***********************************-->
+
+    <!--**********************************
+       Support ticket button end
+    ***********************************-->
+
+
+</div>
+<!--**********************************
+    Main wrapper end
+***********************************-->
+
+<!--**********************************
+    Scripts
+***********************************-->
+<!-- Required vendors -->
+<script src="vendor/global/global.min.js"></script>
+<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="vendor/chart-js/chart.bundle.min.js"></script>
+<script src="vendor/owl-carousel/owl.carousel.js"></script>
+
+<!-- Chart piety plugin files -->
+<script src="vendor/peity/jquery.peity.min.js"></script>
+
+<!-- Apex Chart -->
+<script src="vendor/apexchart/apexchart.js"></script>
+
+<!-- Dashboard 1 -->
+<script src="js/dashboard/dashboard-1.js"></script>
+
+<script src="js/custom.min.js"></script>
+<script src="js/deznav-init.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/styleSwitcher.js"></script>
+
+<script>
+    function carouselReview() {
+        /*  testimonial one function by = owl.carousel.js */
+        /*  testimonial one function by = owl.carousel.js */
+        jQuery('.testimonial-one').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            nav: false,
+            center: true,
+            rtl:true,
+            dots: false,
+            navText: ['<i class="fas fa-caret-left"></i>', '<i class="fas fa-caret-right"></i>'],
+            responsive: {
+                0: {
+                    items: 2
+                },
+                400: {
+                    items: 3
+                },
+                700: {
+                    items: 5
+                },
+                991: {
+                    items: 6
+                },
+
+                1200: {
+                    items: 4
+                },
+                1600: {
+                    items: 5
+                }
+            }
+        })
+    }
+
+    jQuery(window).on('load', function () {
+        setTimeout(function () {
+            carouselReview();
+
+        }, 1000);
+    });
+
+    jQuery(document).ready(function(){
+        setTimeout(function(){
+            dezSettingsOptions.version = 'light';
+            new dezSettings(dezSettingsOptions);
+
+            setCookie('version','light');
+        },1500)
+    });
+</script>
+</body>
+
+
+<!-- Mirrored from mophy.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2024 15:45:54 GMT -->
+</html>
