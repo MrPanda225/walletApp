@@ -31,4 +31,6 @@ public class Compte {
     @ManyToOne
     @JoinColumn(name = "id_type_cpt")
     private TypeCpt type_cpt;
+
+   
 }
