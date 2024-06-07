@@ -19,10 +19,20 @@ public class web {
         return "index.html";
     }
 
-    @GetMapping("/register")
+  /*  @GetMapping("/register")
     public String register(Model model) {
         List<TypeUtilisateur> typesUtilisateur = type_user.getAllTypeUtilisateurs();
         model.addAttribute("typesUtilisateur", typesUtilisateur);
         return "register.html";
+    }*/
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login.html";
+    }
+
+    @GetMapping("/signup")
+    public String signup(Model model) {
+        return "signup.html";
     }
 }
