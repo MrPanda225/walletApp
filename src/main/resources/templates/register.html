@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<!--Title-->
+	<title>Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone</title>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="DexignZone">
+	<meta name="robots" content="index, follow">
+
+	<meta name="keywords"
+		content="Mophy, Payment Admin Dashboard, Bootstrap Template, FrontEnd, Web Application, Payment Management, Responsive Design, User Experience, Customizable, Modern UI, Dashboard Template, Admin Panel, Bootstrap 4, HTML5, CSS3, JavaScript, Finance, Payment Gateway, Admin Template, UI Kit, SASS, SCSS, CRM, Analytics, Responsive Dashboard, responsive admin dashboard, sales dashboard, ui kit, web app, Admin Dashboard, Template, Admin, CMS pages, Authentication, FrontEnd Integration, Web Application UI, Bootstrap Framework, User Interface Kit, Financial Dashboard, SASS Integration, Customizable Template, Payment Gateway, HTML5/CSS3, CRM Dashboard, Analytics Dashboard, Admin Dashboard UI, Mobile-Friendly Design, UI Components, Dashboard Widgets, Dashboard Framework, Data Visualization, User Experience (UX), Dashboard Widgets, Real-time Analytics, Cross-Browser Compatibility, Interactive Charts, Payment Processing, Performance Optimization, Multi-Purpose Template, Efficient Admin Tools, Task Management, Modern Web Technologies, Payment Tracking, Responsive Tables, Dashboard Widgets, Invoice Management, Access Control, Modular Design, Payment History, Trend Analysis, User-Friendly Interface">
+
+	<meta name="description"
+		content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+
+	<meta property="og:title" content="Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone">
+	<meta property="og:description"
+		content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+	<meta property="og:image" content="social-image.png">
+
+	<meta name="format-detection" content="telephone=no">
+
+	<meta name="twitter:title" content="Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone">
+	<meta name="twitter:description"
+		content="Explore the power of Mophy – a sleek and feature-rich Payment Admin Dashboard Bootstrap Template with a seamlessly integrated FrontEnd. Effortlessly manage your payment processes and elevate user experiences with this modern, responsive, and customizable solution. Unlock a world of possibilities in payment administration and frontend design with Mophy – your key to streamlined and visually stunning web applications.">
+	<meta name="twitter:image" content="social-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<!-- MOBILE SPECIFIC -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon icon -->
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+	<!-- Form step -->
+	<link href="vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
+	<!-- Custom Stylesheet -->
+	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link class="main-css" href="css/style.css" rel="stylesheet">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+    
+<body>
+   <div class="login-account">
+    <div class="content-body default-height">
+        <div class="container-fluid">
+            <div class="page-titles">
+                conned
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-xl-12 col-xxl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Bienvenue ---Register</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="smartwizard" class="form-wizard order-create">
+                                <div class="tab-content">
+                                    <!-- Form 1: User Details -->
+                                    <form id="user-form" action="javascript:void(0);" method="post">
+                                        <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Nom</label>
+                                                        <input type="text" name="nom" class="form-control" placeholder="Parsley" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Prenom</label>
+                                                        <input type="text" name="prenoms" class="form-control" placeholder="Montana" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Email </label>
+                                                        <input type="email" class="form-control" id="inputGroupPrepend2"
+                                                            aria-describedby="inputGroupPrepend2" placeholder="example@example.com" name="email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Telephone</label>
+                                                        <input type="number" name="phone_number" class="form-control" placeholder="(+1)408-657-9007" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-3">
+                                                    <div class="form-group" style="display: none;">
+                                                        <label class="form-label required">Type User</label>
+                                                        <select class="form-control" name="type_user" required>
+                                                            <option value="1">Sélectionnez un type</option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center mb-4">
+                                                <button type="submit" class="btn btn-primary">Next</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                    
+                                    <!-- Form 2: Account Details (Initially Hidden) -->
+                                    <form id="cpt-form" action="javascript:void(0);" method="post" class="hidden">
+                                        <div id="wizard_Time" class="tab-pane" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Numero de Compte</label>
+                                                        <input type="text" name="num_cpt" class="form-control" placeholder="" required readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Solde de Départ</label>
+                                                        <input type="number" class="form-control" name="solde" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 mb-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label required">Date Creation</label>
+                                                        <input type="date" name="date_creation" class="form-control" required readonly>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            
+                                            <div class="text-center mb-4">
+                                                <button type="button" class="btn btn-secondary" id="back-button">Back</button>
+                                                <button type="submit" class="btn btn-primary " id="submitBtn">Register</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+
+<!--**********************************
+	Scripts
+***********************************-->
+<!-- Required vendors -->
+<script src="vendor/global/global.min.js"></script>
+<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Form validate init -->
+<script src="js/plugins-init/jquery.validate-init.js"></script>
+<!-- Form Steps -->
+<script src="vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="js/deznav-init.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/styleSwitcher.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // SmartWizard initialize
+        $('#smartwizard').smartWizard();
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        function generateAccountNumber() {
+            return Math.random().toString(36).substr(2, 7).toUpperCase();
+        }
+
+        function getCurrentDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        $("#user-form").submit(function(event) {
+            event.preventDefault();
+            
+            // Check if all fields in the first form are filled
+            const form = event.target;
+            if (form.checkValidity()) {
+                // Hide the first form
+                $(form).addClass('hidden');
+                
+                // Show the second form
+                $("#cpt-form").removeClass('hidden');
+                
+                // Generate random account number and current date
+                var accountNumber = generateAccountNumber();
+                var currentDate = getCurrentDate();
+                
+                // Fill the generated account number and date in the second form
+                $("input[name='num_cpt']").val(accountNumber);
+                $("input[name='date_creation']").val(currentDate);
+            } else {
+                form.reportValidity();
+            }
+        });
+
+        $("#back-button").click(function() {
+            // Hide the second form
+            $("#cpt-form").addClass('hidden');
+            
+            // Show the first form
+            $("#user-form").removeClass('hidden');
+        });
+
+        $("#submitBtn").click(function() {
+            // Récupérer les données des deux formulaires
+            var formData1 = $("#user-form").serializeArray();
+            var formData2 = $("#cpt-form").serializeArray();
+            
+            // Convertir les données du formulaire en objet JSON
+            var jsonData = {};
+            $.each(formData1.concat(formData2), function(index, field) {
+                jsonData[field.name] = field.value;
+            });
+
+            // Afficher les données dans la console
+            console.log("Données du formulaire :", jsonData);
+
+            // Envoyer les données du formulaire utilisateur au backend via AJAX au format JSON
+            $.ajax({
+                type: "POST",
+                url: "api/Utilisateurs",
+                contentType: "application/json",
+                data: JSON.stringify(jsonData),
+                success: function(response) {
+                    console.log("Réponse du backend pour Utilisateurs :", response);
+                    
+                    // Afficher l'ID utilisateur
+                    var userId = response.id_user;
+                    console.log("ID Utilisateur :", userId);
+                    
+                    
+                    // Récupérer les données du formulaire de compte
+                    var accountData = {
+                        num_cpt: $("input[name='num_cpt']").val(),
+                        solde: $("input[name='solde']").val(),
+                        date_creation: $("input[name='date_creation']").val(),
+                        place: $("input[name='place']").val(),
+                        id_user: userId  // Assumer que l'ID utilisateur est renvoyé dans la réponse
+                       
+                    };
+                   
+
+                    // Envoyer les données du formulaire de compte au backend via AJAX au format JSON
+                    $.ajax({
+                        type: "POST",
+                        url: "api/compte/" + userId, // Passer l'ID de l'utilisateur dans l'URL
+                        contentType: "application/json",
+                        data: JSON.stringify(accountData),
+                        success: function(accountResponse) {
+                            console.log("Réponse du backend pour Comptes :", accountResponse);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Erreur lors de l'envoi des données du compte :", error);
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("Erreur lors de l'envoi des données de l'utilisateur :", error);
+                }
+            });
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
