@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walletApp.backend.model.Fournisseur;
-import com.walletApp.backend.repository.FrsRepository;
+import com.walletApp.backend.repository.FournisseurRepository;
 
 
 @Service
 public class FrsService {
     
  @Autowired
-    private FrsRepository repository;
+    private FournisseurRepository repository;
 
     public List<Fournisseur> getAllFrs() {
         return repository.findAll();

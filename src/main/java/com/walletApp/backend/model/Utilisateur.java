@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -22,11 +24,15 @@ public class Utilisateur {
     private String sexe;
     private String email;
     private String photoUrl;
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     private String login;
     private String password;
 
     @ManyToOne
     @JoinColumn(name = "id_type_user")
     private TypeUtilisateur type_user;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Compte> comptes = new HashSet<>();
 }

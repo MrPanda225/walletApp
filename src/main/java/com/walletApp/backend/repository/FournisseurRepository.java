@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.walletApp.backend.model.Fournisseur;
 
 @Repository
-public interface FrsRepository extends JpaRepository<Fournisseur, Integer> {
+public interface FournisseurRepository extends JpaRepository<Fournisseur, Integer> {
     
 }

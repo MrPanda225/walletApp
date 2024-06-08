@@ -55,14 +55,14 @@
                     <p>Login page allows users to enter login credentials for authentication and access to secure content.</p>
                 </div>
 
-                <form action="https://mophy.dexignzone.com/xhtml/index.html">
+                <form id="loginForm" method="post" action="/api/Utilisateurs/login" enctype="multipart/form-data">
                     <div class="mb-4">
                         <label class="form-label required">Email</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" name="email">
                     </div>
                     <div class="mb-4 position-relative">
                         <label class="mb-1 form-label required">Password</label>
-                        <input type="password" id="dz-password" class="form-control">
+                        <input type="password" id="dz-password" class="form-control" name="password">
                         <span class="show-pass eye">
 
 								<i class="fa fa-eye-slash"></i>
