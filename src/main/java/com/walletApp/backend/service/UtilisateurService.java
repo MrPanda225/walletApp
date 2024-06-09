@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.walletApp.backend.config.AccountNumberGenerator;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +63,10 @@ public class UtilisateurService {
 
     public Utilisateur login(String email, String password){
         return repository.findByEmailAndPassword(email, password);
+    }
+
+    public Utilisateur findUserWithAccounts(int userId) {
+        return repository.findByIdWithComptes(userId);
     }
 
 }

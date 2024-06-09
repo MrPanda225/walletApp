@@ -2,6 +2,7 @@ package com.walletApp.backend.controller;
 
 import com.walletApp.backend.model.*;
 import com.walletApp.backend.service.TypeUtilisateurService;
+import com.walletApp.backend.service.UtilisateurService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class web {
@@ -16,22 +18,15 @@ public class web {
     private TypeUtilisateurService type_user;
 
     @Autowired
+    UtilisateurService utilisateurService;
+
+    @Autowired
     private HttpSession session;
 
     @GetMapping("/")
     public String index(Model model) {
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
-        Compte cpt = (Compte) session.getAttribute("cpt");
-        model.addAttribute("user", utilisateur);
-        return "index.html";
+        return helpFunction(model,"index.html");
     }
-
-  /*  @GetMapping("/register")
-    public String register(Model model) {
-        List<TypeUtilisateur> typesUtilisateur = type_user.getAllTypeUtilisateurs();
-        model.addAttribute("typesUtilisateur", typesUtilisateur);
-        return "register.html";
-    }*/
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -41,5 +36,40 @@ public class web {
     @GetMapping("/signup")
     public String signup(Model model) {
         return "signup.html";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
+
+    @GetMapping("/profileCount")
+    public String profileCount(Model model) {
+        return helpFunction(model,"profile.html");
+    }
+
+    private String helpFunction(Model model, String url){
+
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
+        model.addAttribute("user", utilisateur);
+
+        if (utilisateur == null) {
+            return "redirect:/login";
+        }
+
+        utilisateur = utilisateurService.findUserWithAccounts(utilisateur.getId_user());
+
+        String photoUrl = utilisateur.getPhotoUrl();
+        if (photoUrl == null || photoUrl.isEmpty()) {
+            photoUrl = "/uploads/default-profile.jpg"; // Chemin de votre image par défaut
+        }
+
+        model.addAttribute("photoUrl", photoUrl);
+
+        Compte premierCompte = utilisateur.getComptes().stream().findFirst().orElse(null);
+        model.addAttribute("compte", premierCompte);
+
+        return url;
     }
 }

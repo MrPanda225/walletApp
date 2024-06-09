@@ -5,7 +5,7 @@
 <!-- Mirrored from mophy.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jun 2024 15:45:18 GMT -->
 <head>
     <!--Title-->
-    <title>Mophy - Payment Admin Dashboard Bootstrap Template + FrontEnd | DexignZone</title>
+    <title>WalletApp</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -70,10 +70,10 @@
 <div id="main-wrapper">
 
     <!--**********************************
-        Nav header start
+        Nav header.html start
     ***********************************-->
     <div class="nav-header">
-        <a href="index.html" class="brand-logo">
+        <a href="/" class="brand-logo">
             <img class="logo-abbr" src="images/logo.png" alt="">
             <img class="logo-compact" src="images/logo-text.png" alt="">
             <img class="brand-title" src="images/logo-text.png" alt="">
@@ -86,7 +86,7 @@
         </div>
     </div>
     <!--**********************************
-        Nav header end
+        Nav header.html end
     ***********************************-->
 
     <!--**********************************
@@ -720,21 +720,21 @@
                         <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8 my-3">
                             <div class="card-bx mb-0">
                                 <img src="images/card/card1.png" alt="">
-                                <div class="card-info text-white">
-                                    <p class="mb-1">Main Balance</p>
-                                    <h2 class="fs-36 text-white mb-sm-4 mb-3">$673,412.66</h2>
+                                <div class="card-info text-white" th:if="${compte != null}">
+                                    <p class="mb-1">Solde</p>
+                                    <h2 class="fs-36 text-white mb-sm-4 mb-3" th:text="${compte.solde} +' XOF'">$673,412.66</h2>
                                     <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                                         <img src="images/dual-dot.png" alt="" class="dot-img">
-                                        <h4 class="fs-20 text-white mb-0">**** **** **** 1234</h4>
+                                        <h4 class="fs-20 text-white mb-0" th:text="${compte.num_cpt}">**** **** **** 1234</h4>
                                     </div>
                                     <div class="d-flex">
                                         <div class="me-5">
-                                            <p class="fs-14 mb-1 op6">VALID THRU</p>
-                                            <span>08/21</span>
+                                            <p class="fs-14 mb-1 op6">Date</p>
+                                            <span th:text="${compte.date_creation}">08/21</span>
                                         </div>
                                         <div>
-                                            <p class="fs-14 mb-1 op6">CARD HOLDER</p>
-                                            <span>Franklin Jr.</span>
+                                            <p class="fs-14 mb-1 op6">Nom Prenoms</p>
+                                            <span th:text="${user.nom + ' ' + user.prenoms}">Franklin Jr.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -749,6 +749,7 @@
                                 <div class="card-header d-block d-sm-flex border-0">
                                     <div class="me-3">
                                         <h4 class="fs-20 text-black">Previous Transactions</h4>
+                                        <p class="mb-0 fs-13">Lorem ipsum dolor sit amet, consectetur</p>
                                     </div>
                                     <div class="card-action card-tabs d-inline-block mt-3 mt-sm-0">
                                         <ul class="nav nav-tabs" role="tablist">
@@ -1384,7 +1385,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
     <!--**********************************
         Content body end
