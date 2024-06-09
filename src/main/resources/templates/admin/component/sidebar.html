@@ -13,7 +13,7 @@
                     ><span class="hide-menu">Dashboard</span></a
                     >
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item" th:if="${agence != null}">
                     <a
                             class="sidebar-link has-arrow waves-effect waves-dark"
                             href="javascript:void(0)"
@@ -23,7 +23,7 @@
                     >
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="form-basic.html" class="sidebar-link"
+                            <a href="/administration/depot" class="sidebar-link"
                             ><i class="mdi mdi-note-outline"></i
                             ><span class="hide-menu"> Dépôt </span></a
                             >
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item" th:if="${tUser == 2}">
                     <a
                             class="sidebar-link has-arrow waves-effect waves-dark"
                             href="javascript:void(0)"
@@ -46,9 +46,9 @@
                     >
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a href="form-basic.html" class="sidebar-link"
+                            <a href="/administration/addAgence" class="sidebar-link"
                             ><i class="mdi mdi-note-outline"></i
-                            ><span class="hide-menu"> Geré User </span></a
+                            ><span class="hide-menu"> Geré Agences </span></a
                             >
                         </li>
                         <li class="sidebar-item">
@@ -59,7 +59,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item" th:if="${tUser == 3}">
                     <a
                             class="sidebar-link has-arrow waves-effect waves-dark"
                             href="javascript:void(0)"

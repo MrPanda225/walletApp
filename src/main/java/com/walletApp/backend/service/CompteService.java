@@ -3,6 +3,8 @@ package com.walletApp.backend.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.walletApp.backend.model.Agence;
+import com.walletApp.backend.repository.AgenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class CompteService {
  
     @Autowired
     private CompteRepository repository;
+
+    @Autowired
+    private AgenceRepository agenceRepository;
 
     public List<Compte> getAllComptes() {
         return repository.findAll();
@@ -32,5 +37,29 @@ public class CompteService {
         repository.deleteById(id);
     }
 
+    public Compte findByAgenceId(int agenceId) {
+        Optional<Agence> agence = agenceRepository.findById(agenceId);
+        return repository.findByAgence(agence.orElse(null));
+    }
 
+    public boolean actualiseSoldCompte(String numCpt, double montant, boolean op) {
+        Optional<Compte> compteOptional = repository.findById(numCpt);
+
+        if (compteOptional.isPresent()) {
+            Compte compte = compteOptional.get();
+            if (op){
+                compte.setSolde(compte.getSolde() + montant);
+            }else {
+                if (compte.getSolde() >= montant) {
+                    compte.setSolde(compte.getSolde() - montant);
+                }else {
+                    return false;
+                }
+            }
+            repository.save(compte);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

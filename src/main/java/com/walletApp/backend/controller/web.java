@@ -1,6 +1,8 @@
 package com.walletApp.backend.controller;
 
 import com.walletApp.backend.model.*;
+import com.walletApp.backend.repository.CompteRepository;
+import com.walletApp.backend.service.CompteService;
 import com.walletApp.backend.service.TypeUtilisateurService;
 import com.walletApp.backend.service.UtilisateurService;
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +21,9 @@ public class web {
 
     @Autowired
     UtilisateurService utilisateurService;
+
+    @Autowired
+    CompteRepository compteRepository;
 
     @Autowired
     private HttpSession session;
@@ -67,7 +72,7 @@ public class web {
 
         model.addAttribute("photoUrl", photoUrl);
 
-        Compte premierCompte = utilisateur.getComptes().stream().findFirst().orElse(null);
+        Compte premierCompte = compteRepository.findByUser(utilisateur);
         model.addAttribute("compte", premierCompte);
 
         return url;

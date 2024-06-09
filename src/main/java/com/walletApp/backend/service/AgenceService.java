@@ -12,7 +12,7 @@ import com.walletApp.backend.repository.AgenceRepository;
 @Service
 public class AgenceService {
     
- @Autowired
+    @Autowired
     private AgenceRepository repository;
 
     public List<Agence> getAllAgences() {
@@ -29,6 +29,10 @@ public class AgenceService {
 
     public void deleteAgence(int id) {
         repository.deleteById(id);
+    }
+
+    public Agence loginAgence(String username, String password){
+        return repository.findByUsernameAndPassword(username, password);
     }
 
 }

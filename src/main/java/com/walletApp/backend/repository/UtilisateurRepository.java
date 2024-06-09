@@ -9,6 +9,4 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Intege
     Utilisateur findByEmail(String email);
     Utilisateur findByPhoneNumber(String phoneNumber);
     Utilisateur findByEmailAndPassword(String email, String password);
-    @Query("SELECT u FROM Utilisateur u LEFT JOIN FETCH u.comptes WHERE u.id_user = :userId")
-    Utilisateur findByIdWithComptes(@Param("userId") int userId);
 }

@@ -33,6 +33,4 @@ public class Utilisateur {
     @JoinColumn(name = "id_type_user")
     private TypeUtilisateur type_user;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Compte> comptes = new HashSet<>();
 }

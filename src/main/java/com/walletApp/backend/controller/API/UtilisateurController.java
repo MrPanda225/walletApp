@@ -40,6 +40,9 @@ public class UtilisateurController {
     private TypeUtilisateurRepository typeUtilisateurRepository;
 
     @Autowired
+    private AgenceService agenceService;
+
+    @Autowired
     private HttpSession session;
 
     @GetMapping
@@ -123,7 +126,7 @@ public class UtilisateurController {
 
         TypeCpt typeCpt = typeCptRepository.findById(1).orElseThrow(() -> new RuntimeException("Type de compte non trouvé"));;
 
-        Compte cpt = utilisateurService.createCompteForUser(utilisateur, null, null, typeCpt);
+        Compte cpt = utilisateurService.createCompte(utilisateur, null, null, typeCpt);
 
         session.setAttribute("user", user);
         session.setAttribute("cpt", cpt);
@@ -146,4 +149,54 @@ public class UtilisateurController {
         return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/").build();
     }
 
+    @PostMapping("/loginAdmin")
+    public ResponseEntity<?> loginAdmin(@RequestParam("email") String email, @RequestParam("password") String password) {
+
+        Utilisateur user = utilisateurService.login(email, password);
+
+        if (user != null) {
+            Integer id = user.getType_user().getId_type_user();
+
+            if ( !id.equals(1)) {
+                System.out.println("this id " +id);
+                Compte cpt = compteRepository.findByUser(user);
+
+                session.setAttribute("user", user);
+                session.setAttribute("cpt", cpt);
+                return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/administration/").build();
+            }
+        } else {
+            Agence agence = agenceService.loginAgence(email, password);
+            if (agence == null) {
+                return ResponseEntity.badRequest().body("Erreur de connexion.");
+            }
+            Compte cpt = compteRepository.findByAgence(agence);
+
+            session.setAttribute("agence", agence);
+            session.setAttribute("cpt", cpt);
+            return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/administration/").build();
+        }
+        return ResponseEntity.badRequest().body("Erreur de connexion.");
+    }
+
+    @PostMapping("/addAgence")
+    public ResponseEntity<?> creerAgence(@RequestParam("lib_agence") String lib_agence,
+                                                 @RequestParam("localisation") String localisation,
+                                                 @RequestParam("username") String username,
+                                                 @RequestParam("password") String password) {
+
+        Agence agence = new Agence();
+        agence.setLib_agence(lib_agence);
+        agence.setLocalisation(localisation);
+        agence.setUsername(username);
+        agence.setPassword(password);
+
+        agence = agenceService.createOrUpdateAgence(agence);
+
+        TypeCpt typeCpt = typeCptRepository.findById(2).orElseThrow(() -> new RuntimeException("Type de compte non trouvé"));;
+
+        Compte cpt = utilisateurService.createCompte(null, agence, null, typeCpt);
+
+        return ResponseEntity.status(HttpStatus.FOUND).header(HttpHeaders.LOCATION, "/administration/addAgence").build();
+    }
 }

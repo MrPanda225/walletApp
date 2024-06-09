@@ -13,4 +13,7 @@ public class Agence {
     private int id_agence;
 
     private String lib_agence;
+    private String localisation;
+    private String username;
+    private String password;
 }

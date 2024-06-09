@@ -11,17 +11,17 @@
 </head>
 <body style="background: url('/admin/bg-2.jpg') no-repeat center center fixed; background-size: cover;">
     <div style="width: 300px; margin: auto; margin-top: 10%;">
-        <form class="card p-3" style="" action="#">
+        <form class="card p-3" style="" method="post" action="/api/Utilisateurs/loginAdmin">
             <div class=" mt-3">
                 <h2 class="text-center">CONNEXION</h2>
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                <label for="email" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
             </div>
             <div class="mb-3">
                 <label for="pwd" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
             </div>
             <div class="form-check mb-3">
                 <label class="form-check-label">

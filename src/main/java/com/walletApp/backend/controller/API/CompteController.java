@@ -1,30 +1,35 @@
 package com.walletApp.backend.controller.API;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import com.walletApp.backend.model.*;
+import com.walletApp.backend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.walletApp.backend.model.Compte;
-import com.walletApp.backend.model.Utilisateur;
-import com.walletApp.backend.service.CompteService;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/api/compte")
 public class CompteController {
     
- @Autowired
+    @Autowired
     private CompteService service;
+
+    @Autowired
+    private StatusService statusService;
+
+    @Autowired
+    private TypeCompteService typeCompteService;
+
+    @Autowired
+    private TransactionService transactionService;
+
+    @Autowired
+    private TypeTransactionService typeTransactionService;
 
     @GetMapping
     public ResponseEntity<List<Compte>> getAllComptes() {
@@ -73,6 +78,37 @@ public class CompteController {
     public ResponseEntity<Void> deleteCompte(@PathVariable String id) {
         service.deleteCompte(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/depot")
+    public boolean depot(@RequestParam String cpt_exp, @RequestParam String cpt_des, @RequestParam Double montant) {
+
+        boolean result = service.actualiseSoldCompte(cpt_exp, montant, false) ? service.actualiseSoldCompte(cpt_des, montant, true) : false;
+        if (result){
+
+            Optional<Compte> dest = service.getCompteById(cpt_des);
+            Optional<Compte> exp = service.getCompteById(cpt_exp);
+            Optional<Status> st = statusService.findById(1);
+            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(2);
+            Optional<TypeTransaction> tt = typeTransactionService.findById(1);
+
+            LocalDate dateCreation = LocalDate.now();
+            Double frais = montant * 0.1 ;
+
+
+            Transaction transaction = new Transaction();
+            transaction.setCpt_dest(dest.orElseGet(null));
+            transaction.setCpt_exp(exp.orElseGet(null));
+            transaction.setStatus(st.orElseGet(null));
+            transaction.setLieu(tc.orElseGet(null));
+            transaction.setTypeTransaction(tt.orElseGet(null));
+            transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setFrais_trans(frais);
+            transaction.setMontant_trans(montant);
+
+            transactionService.save(transaction);
+        }
+        return result;
     }
 
 }

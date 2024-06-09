@@ -49,7 +49,7 @@ public class UtilisateurService {
         return repository.findByPhoneNumber(phoneNumber) != null;
     }
 
-    public Compte createCompteForUser(Utilisateur utilisateur, Agence agence, Fournisseur fournisseur, TypeCpt typeCpt) {
+    public Compte createCompte(Utilisateur utilisateur, Agence agence, Fournisseur fournisseur, TypeCpt typeCpt) {
         Compte compte = new Compte();
         compte.setNum_cpt(AccountNumberGenerator.generateAccountNumber());
         compte.setDate_creation(new Date(System.currentTimeMillis()));
@@ -66,7 +66,8 @@ public class UtilisateurService {
     }
 
     public Utilisateur findUserWithAccounts(int userId) {
-        return repository.findByIdWithComptes(userId);
+        Optional<Utilisateur> user = repository.findById(userId);
+        return user.orElse(null);
     }
 
 }
