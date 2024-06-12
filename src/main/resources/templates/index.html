@@ -46,6 +46,7 @@
     <link class="main-css" href="css/style.css" rel="stylesheet">
 
 
+
 </head>
 
 <body>
@@ -692,7 +693,7 @@
     <!--**********************************
         Header start
     ***********************************-->
-    <div th:replace="component/header"></div>
+    <div th:replace="~{component/header}"></div>
     <!--**********************************
         Header end ti-comment-alt
     ***********************************-->
@@ -700,7 +701,7 @@
     <!--**********************************
         Sidebar start
     ***********************************-->
-    <div th:replace="component/sidebar"></div>
+    <div th:replace="~{component/sidebar}"></div>
     <!--**********************************
         Sidebar end
     ***********************************-->
@@ -717,15 +718,15 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8 my-3">
-                            <div class="card-bx mb-0">
+                        <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8">
+                            <div class="card-bx stacked">
                                 <img src="images/card/card1.png" alt="">
                                 <div class="card-info text-white" th:if="${compte != null}">
                                     <p class="mb-1">Solde</p>
                                     <h2 class="fs-36 text-white mb-sm-4 mb-3" th:text="${compte.solde} +' XOF'">$673,412.66</h2>
                                     <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                                         <img src="images/dual-dot.png" alt="" class="dot-img">
-                                        <h4 class="fs-20 text-white mb-0" th:text="${compte.num_cpt}">**** **** **** 1234</h4>
+                                        <h4 class="fs-20 text-white mb-0" th:text="${formattedAccountNumber}">**** **** **** 1234</h4>
                                     </div>
                                     <div class="d-flex">
                                         <div class="me-5">
@@ -733,17 +734,28 @@
                                             <span th:text="${compte.date_creation}">08/21</span>
                                         </div>
                                         <div>
-                                            <p class="fs-14 mb-1 op6">Nom Prenoms</p>
+                                            <p class="fs-14 mb-1 op6">Nom et Prenoms</p>
                                             <span th:text="${user.nom + ' ' + user.prenoms}">Franklin Jr.</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a class="btn btn-primary rounded me-2" href="/depot">EFFECTUER DEPOT</a>
+                                    <a class="btn btn-primary rounded" href="/services">PAIEMENT SERVICES</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="row">
+
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-header d-block d-sm-flex border-0">
@@ -777,7 +789,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip0)">
@@ -816,7 +828,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip1)">
@@ -855,7 +867,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip2)">
@@ -894,7 +906,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip7)">
@@ -933,7 +945,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip3)">
@@ -980,7 +992,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip9)">
@@ -1019,7 +1031,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip10)">
@@ -1058,7 +1070,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip4)">
@@ -1097,7 +1109,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip9)">
@@ -1136,7 +1148,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip10)">
@@ -1183,7 +1195,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip5)">
@@ -1222,7 +1234,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip6)">
@@ -1261,7 +1273,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip10)">
@@ -1300,7 +1312,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1.00002" y="1" width="61" height="61"
                                                                   rx="29" stroke="#2BC155" stroke-width="2" />
                                                             <g clip-path="url(#clip9)">
@@ -1339,7 +1351,7 @@
                                                 <tr>
                                                     <td>
                                                         <svg width="63" height="63" viewBox="0 0 63 63"
-                                                             fill="none" xmlns="../../www.w3.org/2000/svg.html">
+                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <rect x="1" y="1" width="61" height="61" rx="29"
                                                                   stroke="#FF2E2E" stroke-width="2" />
                                                             <g clip-path="url(#clip3)">
@@ -1385,6 +1397,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!--**********************************
         Content body end
@@ -1439,6 +1452,7 @@
 <script src="js/deznav-init.js"></script>
 <script src="js/demo.js"></script>
 <script src="js/styleSwitcher.js"></script>
+<script src="js/user.js"></script>
 
 <script>
     function carouselReview() {
@@ -1492,6 +1506,9 @@
             setCookie('version','light');
         },1500)
     });
+
+
+
 </script>
 </body>
 

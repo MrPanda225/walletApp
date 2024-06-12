@@ -1,5 +1,6 @@
 package com.walletApp.backend.controller;
 
+import com.walletApp.backend.config.AccountNumberGenerator;
 import com.walletApp.backend.model.*;
 import com.walletApp.backend.repository.CompteRepository;
 import com.walletApp.backend.service.CompteService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.walletApp.backend.config.AccountNumberGenerator.*;
 
 import java.util.List;
 import java.util.Set;
@@ -54,7 +57,12 @@ public class web {
         return helpFunction(model,"profile.html");
     }
 
-    private String helpFunction(Model model, String url){
+    @GetMapping("/depot")
+    public String depot(Model model) {
+        return helpFunction(model,"depot.html");
+    }
+
+    private String helpFunction(Model model, String url) {
 
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
         model.addAttribute("user", utilisateur);
@@ -72,8 +80,17 @@ public class web {
 
         model.addAttribute("photoUrl", photoUrl);
 
+
         Compte premierCompte = compteRepository.findByUser(utilisateur);
+        if (premierCompte != null) {
+            String formattedAccountNumber = AccountNumberGenerator.formatAccountNumber(premierCompte.getNum_cpt());
+            model.addAttribute("formattedAccountNumber", formattedAccountNumber);
+            System.out.println(formattedAccountNumber);
+        }
+
         model.addAttribute("compte", premierCompte);
+
+
 
         return url;
     }

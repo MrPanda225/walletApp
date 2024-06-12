@@ -38,6 +38,11 @@ public class WebAdmin {
         return helpFunctionAmin(model, "/admin/depoAgenceToClient.html");
     }
 
+    @GetMapping("/administration/retrait")
+    public String retraitAdmin(Model model) {
+        return helpFunctionAmin(model, "/admin/retraitAgenceToClient.html");
+    }
+
     @GetMapping("/administration/addAgence")
     public String addAgenceAdmin(Model model) {
         List<Agence> agences = agenceService.getAllAgences();
