@@ -3,7 +3,7 @@ package com.walletApp.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.sql.*;
 
 @Entity
 @Table(name = "transactions")
@@ -17,6 +17,7 @@ public class Transaction {
     private Date date_trans;
     private Double montant_trans;
     private Double frais_trans;
+    private Time time_trans;
 
     @ManyToOne
     @JoinColumn(name = "cpt_exp")

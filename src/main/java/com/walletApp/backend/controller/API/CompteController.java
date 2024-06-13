@@ -1,7 +1,9 @@
 package com.walletApp.backend.controller.API;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -115,6 +117,7 @@ public class CompteController {
             transaction.setLieu(tc.orElseGet(null));
             transaction.setTypeTransaction(tt.orElseGet(null));
             transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setTime_trans(Time.valueOf(LocalTime.now()));
             transaction.setFrais_trans(frais);
             transaction.setMontant_trans(montant);
 
@@ -132,7 +135,7 @@ public class CompteController {
             Optional<Compte> exp = service.getCompteById(sourceCompte);
             Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
             Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 2 means transfer
-            Optional<TypeTransaction> tt = typeTransactionService.findById(22); //
+            Optional<TypeTransaction> tt = typeTransactionService.findById(3); //
 
             LocalDate dateCreation = LocalDate.now();
             Double frais = montant * 0.1;
@@ -144,6 +147,7 @@ public class CompteController {
             transaction.setLieu(tc.orElseGet(null));
             transaction.setTypeTransaction(tt.orElseGet(null));
             transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setTime_trans(Time.valueOf(LocalTime.now()));
             transaction.setFrais_trans(frais);
             transaction.setMontant_trans(montant);
 
@@ -214,6 +218,7 @@ public class CompteController {
         transaction.setLieu(tc.orElse(null));
         transaction.setTypeTransaction(tt.orElse(null));
         transaction.setDate_trans(Date.valueOf(dateCreation));
+        transaction.setTime_trans(Time.valueOf(LocalTime.now()));
         transaction.setFrais_trans(frais);
         transaction.setMontant_trans(montant);
 
