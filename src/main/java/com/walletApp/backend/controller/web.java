@@ -4,6 +4,7 @@ import com.walletApp.backend.config.AccountNumberGenerator;
 import com.walletApp.backend.model.*;
 import com.walletApp.backend.repository.CompteRepository;
 import com.walletApp.backend.service.CompteService;
+import com.walletApp.backend.service.TransactionService;
 import com.walletApp.backend.service.TypeUtilisateurService;
 import com.walletApp.backend.service.UtilisateurService;
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,9 @@ public class web {
 
     @Autowired
     UtilisateurService utilisateurService;
+
+    @Autowired
+    TransactionService transactionService;
 
     @Autowired
     CompteRepository compteRepository;
@@ -72,6 +76,9 @@ public class web {
         }
 
         utilisateur = utilisateurService.findUserWithAccounts(utilisateur.getId_user());
+
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(utilisateur.getId_user());
+        model.addAttribute("transactions", transactions);
 
         String photoUrl = utilisateur.getPhotoUrl();
         if (photoUrl == null || photoUrl.isEmpty()) {

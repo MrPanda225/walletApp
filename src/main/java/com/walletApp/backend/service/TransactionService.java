@@ -68,5 +68,9 @@ public class TransactionService {
         notifRepository.save(notification);
     }
 
+    public List<Transaction> getTransactionsByUserId(int userId) {
+        return transactionRepository.findTransactionsByUserId(userId);
+    }
+
 
 }
