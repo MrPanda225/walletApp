@@ -1,8 +1,11 @@
 package com.walletApp.backend.controller.API;
 
+import com.walletApp.backend.model.Compte;
 import com.walletApp.backend.model.Transaction;
+import com.walletApp.backend.service.CompteService;
 import com.walletApp.backend.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,9 @@ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private CompteService compteService;
 
     @GetMapping
     public List<Transaction> getAllTransactions() {
@@ -61,4 +67,7 @@ public class TransactionController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+
 }

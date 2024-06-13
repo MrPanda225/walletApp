@@ -1,10 +1,13 @@
 package com.walletApp.backend.service;
 
+import com.walletApp.backend.model.Compte;
+import com.walletApp.backend.model.Notification;
 import com.walletApp.backend.model.Status;
 import com.walletApp.backend.model.Transaction;
-import com.walletApp.backend.model.Utilisateur;
+import com.walletApp.backend.repository.NotificationRepository;
 import com.walletApp.backend.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,9 @@ public class TransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private NotificationRepository notifRepository;
 
     @Autowired
     private CompteService compteService;
@@ -40,11 +46,11 @@ public class TransactionService {
 
     public void validateTransaction(int transactionId) {
         Transaction transaction = transactionRepository.findById(transactionId)
-                .orElseThrow(() -> new RuntimeException("Transaction not found"));
+                .orElseThrow(() -> new RuntimeException("Aucune transaction trouvée"));
 
-        // Mettre à jour le statut de la transaction de 3 à 2
-        Optional<Status> confirmedStatus = statusService.findById(2);  // Assurez-vous que le statut 2 est pour "confirmé"
-        transaction.setStatus(confirmedStatus.orElseThrow(() -> new RuntimeException("Status not found")));
+        // Mettre à jour le statut de la transaction de 3 à 1
+        Optional<Status> confirmedStatus = statusService.findById(1);
+        transaction.setStatus(confirmedStatus.orElseThrow(() -> new RuntimeException("Status non trouvé")));
 
         // Mettre à jour les soldes des comptes en utilisant actualiseSoldCompte
         boolean debitSuccess = compteService.actualiseSoldCompte(transaction.getCpt_exp().getNum_cpt(), transaction.getMontant_trans(), false);
@@ -55,6 +61,11 @@ public class TransactionService {
         }
 
         transactionRepository.save(transaction);
+
+        Notification notification = notifRepository.findByTransaction(transaction)
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
+        notification.setRead(true);
+        notifRepository.save(notification);
     }
 
 

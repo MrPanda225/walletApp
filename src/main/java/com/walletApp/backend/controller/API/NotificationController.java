@@ -43,7 +43,7 @@ public class NotificationController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/validate/{transactionId}")
+    @PutMapping("/validation/{transactionId}")
     public ResponseEntity<Void> validateTransaction(@PathVariable int transactionId) {
         transactionService.validateTransaction(transactionId);
         return ResponseEntity.noContent().build();

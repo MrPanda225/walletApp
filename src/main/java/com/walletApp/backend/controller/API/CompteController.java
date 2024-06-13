@@ -132,7 +132,7 @@ public class CompteController {
             Optional<Compte> exp = service.getCompteById(sourceCompte);
             Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
             Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 2 means transfer
-            Optional<TypeTransaction> tt = typeTransactionService.findById(1); // Assume type 1 means transfer
+            Optional<TypeTransaction> tt = typeTransactionService.findById(22); //
 
             LocalDate dateCreation = LocalDate.now();
             Double frais = montant * 0.1;
@@ -185,20 +185,24 @@ public class CompteController {
 
         if (!exp.isPresent() || !dest.isPresent()) {
             Map<String, String> response = new HashMap<>();
-            response.put("message", "One or both accounts do not exist.");
+            response.put("message", "Un ou les deux comptes n’existent pas . ");
             return ResponseEntity.badRequest().body(response);
         }
 
-        if (exp.get().getSolde() < montant || dest.get().getSolde() < montant) {
+        if (exp.get().getSolde() < montant) {
             Map<String, String> response = new HashMap<>();
-            response.put("message", "Insufficient funds in one or both accounts.");
+            response.put("message", "Fonds insuffisants sur le compte de " + exp.get().getAgence().getLib_agence());
+            return ResponseEntity.badRequest().body(response);
+        } else if (dest.get().getSolde() < montant) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Fonds insuffisants sur le compte de" + dest.get().getUser().getNom() + " " +dest.get().getUser().getPrenoms());
             return ResponseEntity.badRequest().body(response);
         }
 
-        // Create transaction and mark as pending
-        Optional<Status> st = statusService.findById(3); // Status 3 for pending
+
+        Optional<Status> st = statusService.findById(3);
         Optional<TypeCpt> tc = typeCompteService.getTypeCptById(2);
-        Optional<TypeTransaction> tt = typeTransactionService.findById(2); // Assuming 2 is for withdrawal transactions
+        Optional<TypeTransaction> tt = typeTransactionService.findById(2);
 
         LocalDate dateCreation = LocalDate.now();
         Double frais = montant * 0.0;
@@ -215,49 +219,24 @@ public class CompteController {
 
         transactionService.save(transaction);
 
-        // Send notification to the destination account holder
-        notificationService.createNotification(dest.get().getUser(), "You have a pending withdrawal request. Please confirm.", transaction);
+
+        notificationService.createNotification(dest.get().getUser(), "Veillez confirmer le retrait en attente de "+montant+" XOF de "+exp.get().getAgence().getLib_agence()+" ", transaction);
 
         Map<String, String> response = new HashMap<>();
-        response.put("message", "Retrait en attente de confirmation");
+        response.put("message", "Retrait en attente de confirmation de "+ dest.get().getUser().getNom() + " "+dest.get().getUser().getPrenoms());
         return ResponseEntity.ok(response);
     }
 
-
-
-    @PostMapping("/confirmer-retrait")
-    public ResponseEntity<Map<String, String>> confirmerRetrait(@RequestParam int transactionId) {
-        Optional<Transaction> transactionOptional = transactionService.findById(transactionId);
-
-        if (!transactionOptional.isPresent()) {
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Transaction not found.");
-            return ResponseEntity.badRequest().body(response);
-        }
-
-        Transaction transaction = transactionOptional.get();
-
-        if (transaction.getStatus().getId_status() != 3) { // 3: Pending
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Transaction is not pending.");
-            return ResponseEntity.badRequest().body(response);
-        }
-
-        boolean result = service.actualiseSoldCompte(transaction.getCpt_exp().getNum_cpt(), transaction.getMontant_trans(), false) &&
-                service.actualiseSoldCompte(transaction.getCpt_dest().getNum_cpt(), transaction.getMontant_trans(), true);
-
-        if (result) {
-            Optional<Status> st = statusService.findById(1); // 1: Passed
-            transaction.setStatus(st.orElse(null));
-            transactionService.save(transaction);
-
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Retrait confirmé et terminé avec succès.");
+    @GetMapping("/solde")
+    public ResponseEntity<Map<String, Object>> getSolde(@RequestParam String numCpt) {
+        Optional<Compte> compteOptional = service.getCompteById(numCpt);
+        if (compteOptional.isPresent()) {
+            Compte compte = compteOptional.get();
+            Map<String, Object> response = new HashMap<>();
+            response.put("solde", compte.getSolde());
             return ResponseEntity.ok(response);
         } else {
-            Map<String, String> response = new HashMap<>();
-            response.put("message", "Retrait échoué.");
-            return ResponseEntity.badRequest().body(response);
+            return ResponseEntity.notFound().build();
         }
     }
 
