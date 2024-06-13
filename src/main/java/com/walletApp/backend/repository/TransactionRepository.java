@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
+   // List<Transaction> findByCptExp_NumCptOrCptDest_NumCpt(int cptExpNumCpt);
 
-
-
+  int a = 2 ;
 }
