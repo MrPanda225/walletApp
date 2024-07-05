@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import com.walletApp.backend.model.*;
 import com.walletApp.backend.service.*;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -150,7 +151,9 @@ public class CompteController {
             Optional<Compte> exp = service.getCompteById(sourceCompte);
             Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
             Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 2 means transfer
-            Optional<TypeTransaction> tt = typeTransactionService.findById(22);
+            Optional<TypeTransaction> tt = typeTransactionService.findById(3);
+
+            System.out.println("Pourquoi");
 
             if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
                 System.out.println(dest.get().getNum_cpt());
@@ -215,7 +218,12 @@ public class CompteController {
     }
 
 
-
+    @GetMapping("/bytypcpt/{pk}/")
+    public  ResponseEntity<List<Compte>> getUserByCpt(@PathVariable Integer pk){
+        Optional<TypeCpt> tc = typeCompteService.getTypeCptById(pk);
+        List<Compte> comptes = service.getByTypeCpt(tc.orElseGet(null));
+        return ResponseEntity.ok(comptes);
+    }
 
     @GetMapping("/verifier/{numeroCompte}")
     public ResponseEntity<Map<String, Object>> verifierCompte(@PathVariable String numeroCompte) {

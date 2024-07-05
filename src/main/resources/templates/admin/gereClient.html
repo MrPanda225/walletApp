@@ -14,7 +14,7 @@
             content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+    <title>Matrix</title>
     <!-- Favicon icon -->
     <link
             rel="icon"
@@ -26,15 +26,34 @@
     <link href="/admin/assets/libs/flot/css/float-chart.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="/admin/dist/css/style.min.css" rel="stylesheet" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+
+
+    <!-- Styles pour DataTables et Buttons -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.9/css/buttons.dataTables.min.css">
+
+    <!-- Scripts pour jQuery, DataTables et Buttons -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.9/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.9/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.9/js/buttons.print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.4/dist/xlsx.full.min.js"></script>
+
+
 </head>
-
-
+<style>
+    table.dataTable thead th, table.dataTable thead td {
+        padding: 10px 18px;
+        border-bottom: 1px solid #111;
+    }
+    table.dataTable tbody td {
+        padding: 8px 16px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
 <body>
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
@@ -107,54 +126,25 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" id="num_cpt" placeholder="Enter num_cpt" name="num_cpt">
-                                    </div>
-                                </div>
-                                <input th:value="${exp}" hidden="" type="text" id="exp">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary" id="validateNumCpt">Valider</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="row2">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <input type="text" disabled class="form-control" id="numCpt" placeholder="Enter nomClient" >
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <input type="text" disabled class="form-control" id="nomClient" placeholder="Enter nomClient" >
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <input type="text" disabled class="form-control" id="prenomsClient" placeholder="Enter prenomsClient" >
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <input type="number" class="form-control" id="montant" placeholder="Enter montant" name="montant">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <button type="submit" id="depotBtn" class="btn btn-primary">Valider</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <button class="btn btn-light" id="genererFichier">Générer le fichier Excel (.xlsx)</button>
+                            <table id="transactionTable" class="display" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Num Compte</th>
+                                    <th>Nom</th>
+                                    <th>Prenoms</th>
+                                    <th>Sexe</th>
+                                    <th>Date Naiss</th>
+                                    <th>Tel</th>
+                                    <th>Solde</th>
+                                    <th>Date de Création Compte</th>
+                                    <!-- Ajoutez d'autres colonnes au besoin -->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- Les données seront ajoutées ici -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -207,74 +197,6 @@
 <script src="/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 <script src="/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 <script src="/admin/assets/extra-libs/DataTables/datatables.min.js"></script>
-<script>
-    $(document).ready(function() {
-           $('#row2').hide();
-
-           $('#validateNumCpt').click(function(event) {
-               event.preventDefault();
-               var numCpt = $('#num_cpt').val();
-
-               $.ajax({
-                   url: 'http://127.0.0.1:8080/api/compte/' + numCpt,
-                   type: 'GET',
-                   success: function(data) {
-                       if (data.user != null) {
-                           $('#numCpt').val(data.num_cpt);
-                           $('#nomClient').val(data.user.nom);
-                           $('#prenomsClient').val(data.user.prenoms);
-                           $('#row2').show();
-                       } else {
-                           alert('Compte non trouvé');
-                       }
-                   },
-                   error: function() {
-                       alert('Erreur lors de la récupération des informations du compte');
-                   }
-               });
-           });
-
-           $('#validateMontant').click(function(event) {
-               event.preventDefault();
-               var numCpt = $('#num_cpt').val();
-               var montant = $('#montant').val();
-
-               // Effectuez ici la logique supplémentaire pour valider et envoyer le montant si nécessaire.
-               alert('Montant validé : ' + montant);
-           });
-
-    $('#depotBtn').click(function () {
-        var cptExp = $('#exp').val();
-        var cptDes = $('#num_cpt').val();
-        var montant = $('#montant').val();
-
-        $.ajax({
-            url: 'http://127.0.0.1:8080/api/compte/depot',
-            type: 'POST',
-            contentType: 'application/x-www-form-urlencoded',
-            data: {
-                cpt_exp: cptExp,
-                cpt_des: cptDes,
-                montant: montant
-            },
-            success: function (response) {
-
-                if (response) {
-                    $('#resultMessage').text('Dépôt réussi');
-                    alert("Dépôt réussi")
-                } else {
-                    $('#resultMessage').text('Échec du dépôt');
-                }
-                $('#row2').hide();
-            },
-            error: function (xhr, status, error) {
-                $('#row2').show();
-                $('#resultMessage').text('Erreur: ' + error);
-            }
-        });
-});
-    });
-
-</script>
+<script src="/js/gereClient.js"></script>
 </body>
 </html>

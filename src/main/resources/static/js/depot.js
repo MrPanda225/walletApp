@@ -4,7 +4,7 @@ function verifierCompte() {
 
     if (numCptsElement) {
         var monCompte = numCptsElement.textContent.trim();
-        console.log("Numéro de compte récupéré :", monCompte);
+        console.log("Numéro de compte récupéré :", numeroCompte);
     } else {
         console.error("Élément avec ID 'numCpts' non trouvé.");
         return;
@@ -17,7 +17,7 @@ function verifierCompte() {
         if (xhr.readyState === 4) {
             var resultMessage = document.getElementById("resultMessage");
 
-            if (xhr.status === 200) {
+            if (xhr.status === 200 ) {
                 var responseData = JSON.parse(xhr.responseText);
 
                 if (numeroCompte === monCompte) {
@@ -91,7 +91,7 @@ function transfererFonds(event) {
        console.log(montant)
 
     $.ajax({
-        url: 'http://localhost:8080/api/compte/transfer',
+        url: '/api/compte/transfer',
         type: 'POST',
         contentType: 'application/x-www-form-urlencoded',
         data: {

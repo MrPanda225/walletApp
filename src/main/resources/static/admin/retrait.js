@@ -6,7 +6,7 @@ $(document).ready(function() {
         var numCpt = $('#num_cpt').val();
 
         $.ajax({
-            url: 'http://localhost:8080/api/compte/' + numCpt,
+            url: 'http://127.0.0.1:8080/api/compte/' + numCpt,
             type: 'GET',
             success: function(data) {
                 if (data.user != null) {
@@ -35,7 +35,7 @@ $(document).ready(function() {
             console.log(montant)
 
         $.ajax({
-            url: 'http://localhost:8080/api/compte/retrait',
+            url: 'http://127.0.0.1:8080/api/compte/retrait',
             type: 'POST',
             contentType: 'application/x-www-form-urlencoded',
             data: {

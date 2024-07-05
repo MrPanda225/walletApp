@@ -146,7 +146,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Basic Datatable</h5>
+                            <h5 class="card-title">Liste Agence</h5>
                             <div class="table-responsive">
                                 <table
                                         id="zero_config"
@@ -169,6 +169,31 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div class="modal fade" id="updateSoldeModal" tabindex="-1" role="dialog" aria-labelledby="updateSoldeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateSoldeModalLabel">Actualiser le Solde</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="updateSoldeForm">
+                                                    <div class="form-group">
+                                                        <label for="soldeInput">Nouveau Solde</label>
+                                                        <input type="number" class="form-control" id="soldeInput" required>
+                                                    </div>
+                                                    <input type="hidden" id="agenceIdInput">
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                <button type="button" class="btn btn-primary" onclick="updateSolde()">Actualiser</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -223,6 +248,7 @@
 <script src="/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 <script src="/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 <script src="/admin/assets/extra-libs/DataTables/datatables.min.js"></script>
+<script src="/admin/js/admin.js"></script>
 <script>
     /****************************************
      *       Basic Table                   *

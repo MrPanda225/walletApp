@@ -33,6 +33,16 @@ public class WebAdmin {
         return helpFunctionAmin(model, "/admin/home.html");
     }
 
+    @GetMapping("/administration/transaction")
+    public String gereTransaction(Model model) {
+        return helpFunctionAmin(model, "/admin/gereTransaction.html");
+    }
+
+    @GetMapping("/administration/client")
+    public String gereClient(Model model) {
+        return helpFunctionAmin(model, "/admin/gereClient.html");
+    }
+
     @GetMapping("/administration/depot")
     public String depotAdmin(Model model) {
         return helpFunctionAmin(model, "/admin/depoAgenceToClient.html");
@@ -71,16 +81,19 @@ public class WebAdmin {
     private String helpFunctionAmin(Model model, String url){
         Compte cpt = (Compte) session.getAttribute("cpt");
 
-        if (cpt != null && cpt.getType_cpt().getId_type_cpt() == 2){
+        if (cpt != null && cpt.getTypecpt().getId_type_cpt() == 2){
             Agence agence = (Agence) session.getAttribute("agence");
+
             model.addAttribute("agence" ,agence);
             model.addAttribute("exp", cpt.getNum_cpt());
+            model.addAttribute("cpt", cpt);
         }else {
             Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
             if (utilisateur == null){
                 return "redirect:/administration";
             }
             model.addAttribute("tUser", utilisateur.getType_user().getId_type_user());
+            model.addAttribute("tUserLib", utilisateur.getType_user().getLib_type_user());
             model.addAttribute("user", utilisateur);
         }
         return url;

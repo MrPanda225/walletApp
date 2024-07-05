@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.walletApp.backend.model.Agence;
+import com.walletApp.backend.model.TypeCpt;
 import com.walletApp.backend.repository.AgenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,5 +87,7 @@ public class CompteService {
         return false;
     }
 
-
+    public List<Compte> getByTypeCpt(TypeCpt typeCpt){
+        return repository.findByTypecpt(typeCpt);
+    }
 }

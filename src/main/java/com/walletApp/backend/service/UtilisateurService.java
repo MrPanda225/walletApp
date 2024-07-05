@@ -53,11 +53,11 @@ public class UtilisateurService {
         Compte compte = new Compte();
         compte.setNum_cpt(AccountNumberGenerator.generateAccountNumber());
         compte.setDate_creation(new Date(System.currentTimeMillis()));
-        compte.setSolde(0.0);
+        compte.setSolde(500000.0);
         compte.setUser(utilisateur);
         compte.setAgence(agence);
         compte.setFournisseur(fournisseur);
-        compte.setType_cpt(typeCpt);
+        compte.setTypecpt(typeCpt);
         return compteRepository.save(compte);
     }
 
