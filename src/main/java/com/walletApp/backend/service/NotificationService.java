@@ -45,7 +45,7 @@ public class NotificationService {
 
     public void markAsRead(Long id) {
         Notification notification = notificationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Notification not found"));
+                .orElseThrow(() -> new RuntimeException("Notification pas vue"));
         notification.setRead(true);
         notificationRepository.save(notification);
     }

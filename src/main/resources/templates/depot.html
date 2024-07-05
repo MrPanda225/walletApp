@@ -117,15 +117,15 @@
             <div class="page-titles">
                 <ol class="breadcrumb">
                     <div class="input-group-append">
-                        <button class="btn btn-primary rounded" type="button" onclick="verifierSolde()">VOIR SOLDE</button>
+                        <button id="toggleSoldeBtn" class="btn btn-primary rounded" type="button" onclick="verifierSolde()">VOIR SOLDE</button>
                     </div>
                 </ol>
-                <div id="resSol" class="fs-20 text-black mb-0"></div>
-
+                <div id="resSol" class="fs-10 text-black mb-0" style="display: none;"></div>
             </div>
             <div class="form-head mb-4" th:if="${compte != null}">
-                <h2 class="text-black font-w600 mb-0">Dashboard</h2>
+                <h2 class="text-black font-w600 mb-0">Dépot</h2>
                 <h4 id="numComptes" hidden="" class="fs-20 text-white mb-0" th:text="${compte.num_cpt}"></h4>
+                <h4 id="numCptt" hidden="" class="fs-20 text-white mb-0" th:text="${compte.num_cpt}"></h4>
             </div>
             <div class="row">
 
@@ -241,6 +241,7 @@
 <script src="js/demo.js"></script>
 <script src="js/styleSwitcher.js"></script>
 <script src="js/depot.js"></script>
+<script src="js/user.js"></script>
 
 </body>
 

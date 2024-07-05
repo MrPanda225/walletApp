@@ -1,3 +1,12 @@
+ function formatDate(dateString) {
+     var date = new Date(dateString);
+     var day = ('0' + date.getDate()).slice(-2);
+     var month = ('0' + (date.getMonth() + 1)).slice(-2); // Les mois sont de 0 à 11
+     var year = date.getFullYear();
+     return day + '-' + month + '-' + year;
+ }
+
+
  $(document).ready(function() {
             var accountId = $('#numComptes').val();
             console.log("Account ID:", accountId); // Afficher l'ID du compte pour vérification
@@ -11,8 +20,9 @@
 
                     data.forEach(function(transaction) {
                         if (transaction.date_trans) {
-                            var date = new Date(transaction.date_trans);
-                            var month = date.getMonth(); // getMonth() retourne un mois de 0 à 11
+                                       var date = new Date(transaction.date_trans);
+                                       var month = date.getMonth();  // getMonth() retourne un mois de 0 à 11
+
 
                             // Déterminer la section correspondante en fonction du mois
                             var monthId = "";
@@ -61,13 +71,20 @@
                                         </td>
                                         <td>
 
+                                        <h6 class="fs-16 font-w600 mb-0">${destinataire}</h6>
                                          <h6><a href="/detail_trans?id_trans=${transaction.id_trans}" class="fs-16 font-w600 mb-0">${expediteur}</a></h6>
-                                            <h6 class="fs-16 font-w600 mb-0">${destinataire}</h6>
+
                                         </td>
+
                                         <td>
-                                            <h6 class="fs-16 text-black font-w400 mb-0">${date.toLocaleDateString()}</h6>
-                                            <span class="fs-14">${transaction.time_trans}</span>
+                                             <h6 class="fs-16 text-black font-w400 mb-0">${formatDate(transaction.date_trans)}</h6>
+                                             <span class="fs-14">${transaction.time_trans}</span>
                                         </td>
+                                         <td>
+                                                                                    <h6 class="fs-16 text-black font-w400 mb-0">${transaction.typeTransaction.lib_type_trans}</h6>
+
+                                                                                </td>
+
                                         <td><span class="fs-16 text-black font-w500">${transaction.montant_trans} XOF</span></td>
                                      <td><span class="${statusClass} fs-16 font-w500 text-end d-block">${transaction.status.lib_status}</span></td>
                                     </tr>

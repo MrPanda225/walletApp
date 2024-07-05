@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
       var userId = $('#id_user').val();
 
     function fetchNotifications() {
@@ -17,7 +15,7 @@ $(document).ready(function() {
                         var notificationHtml = '<li>' +
                             '<div class="timeline-panel">' +
                                 '<div class="media me-2">' +
-                                    '<img alt="image" width="50" src="images/avatar/1.jpg">' +
+                                    '<img alt="image" width="50" src="images/4437635.png">' +
                                 '</div>' +
                                 '<div class="media-body">' +
                                     '<h6 class="mb-1">' + notification.message + '</h6>' +
@@ -81,7 +79,7 @@ $(document).ready(function() {
             url: '/api/compte/solde?numCpt=' + numCpt,
             type: 'GET',
             success: function(data) {
-                $('#soldeCompteUpdate').text(data.solde.toFixed(2) + ' XOF'); // Met à jour le solde sur la page
+                $('#soldeCompteUpdate').text(data.solde + ' XOF'); // Met à jour le solde sur la page
             },
             error: function() {
                 console.error('Erreur lors de la récupération du solde du compte');
@@ -111,6 +109,15 @@ $(document).ready(function() {
             });
         }
     });
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var day = ('0' + date.getDate()).slice(-2);
+        var month = ('0' + (date.getMonth() + 1)).slice(-2); // Les mois sont de 0 à 11
+        var year = date.getFullYear();
+        return day + '-' + month + '-' + year;
+    }
+
 
  $(document).ready(function() {
      var accountId = $('#numCptt').val();
@@ -146,14 +153,17 @@ $(document).ready(function() {
                  iconSvg = '<svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="61" height="61" rx="29" stroke="#FFA500" stroke-width="2"/><g clip-path="url(#clip10)"><path d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z" fill="#FFA500"/><path d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z" fill="#FFA500"/></g><defs><clipPath id="clip10)"><rect width="28" height="28" fill="white" transform="translate(17 45) rotate(-90)"/></clipPath></defs></svg>';
              }
 
+              var formattedDate = formatDate(transaction.date_trans);
+
              var row = '<tr>' +
                          '<td>' + iconSvg + '</td>' +
                          '<td>' +
                              '<h6 class="fs-16 font-w600 mb-0">' + destinataire + '</h6>' +
-                             '<h6 class="fs-16 font-w600 mb-0"> ' + expediteur + '</h6>' +
+                             '<h6><a href="/detail_trans?id_trans='+transaction.id_trans+'" class="fs-16 font-w600 mb-0">'+ expediteur +'</a></h6>'+
+
                          '</td>' +
                          '<td>' +
-                             '<h6 class="fs-16 text-black font-w400 mb-0">' + transaction.date_trans + '</h6>' +
+                             '<h6 class="fs-16 text-black font-w400 mb-0">' + formattedDate + '</h6>' +
                              '<span class="fs-14">' + transaction.time_trans + '</span>' +
                          '</td>' +
                          '<td>' +

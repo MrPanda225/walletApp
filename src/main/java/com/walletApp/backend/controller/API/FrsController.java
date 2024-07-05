@@ -3,6 +3,7 @@ package com.walletApp.backend.controller.API;
 import java.util.List;
 import java.util.Optional;
 
+import com.walletApp.backend.model.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +37,17 @@ public class FrsController {
         Optional<Fournisseur> frs = service.getFournisseurById(id);
         return frs.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/{id}/services")
+    public ResponseEntity<List<Services>> getServicesByFournisseurId(@PathVariable int id) {
+        Optional<Fournisseur> fournisseur = service.getFournisseurById(id);
+        if (fournisseur.isPresent()) {
+            List<Services> services = fournisseur.get().getServicesFournis();
+            return ResponseEntity.ok(services);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping

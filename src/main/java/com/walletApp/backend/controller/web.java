@@ -78,6 +78,11 @@ public class web {
         return helpFunction(model,"all_transac.html");
     }
 
+    @GetMapping("/paiement")
+    public String paiement(Model model) {
+        return helpFunction(model,"paiement.html");
+    }
+
     @GetMapping("/detail_trans")
     public String detailTrans(@RequestParam("id_trans") int idTrans, Model model) {
         Optional<Transaction> transaction = transactionService.findById(idTrans);
