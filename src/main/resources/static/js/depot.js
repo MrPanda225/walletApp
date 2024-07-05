@@ -112,7 +112,7 @@ function transfererFonds(event) {
     }
 
     $.ajax({
-        url: 'http://localhost:8080/api/compte/transfer',
+        url: '/api/compte/transfer',
         type: 'POST',
         contentType: 'application/x-www-form-urlencoded',
         data: {

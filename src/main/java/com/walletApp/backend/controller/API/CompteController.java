@@ -150,7 +150,7 @@ public class CompteController {
             Optional<Compte> dest = service.getCompteById(destinationCompte);
             Optional<Compte> exp = service.getCompteById(sourceCompte);
             Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
-            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(22); // Assume type 2 means transfer
+            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(3); // Assume type 2 means transfer
             Optional<TypeTransaction> tt = typeTransactionService.findById(3);
 
             System.out.println("Pourquoi");
