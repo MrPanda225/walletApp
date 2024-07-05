@@ -45,22 +45,25 @@
     <link href="vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link class="main-css" href="css/style.css" rel="stylesheet">
 
+    <style>
+        .nav-scroller {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-tabs {
+            display: inline-flex;
+        }
+
+        .nav-tabs .nav-item {
+            display: inline-block;
+            white-space: nowrap;
+        }
+    </style>
 
 
 </head>
-<style>
-    .status-success {
-        color: green;
-    }
 
-    .status-pending {
-        color: orange;
-    }
-
-    .status-failed {
-        color: red;
-    }
-</style>
 <body>
 
 <!--*******************
@@ -114,13 +117,13 @@
         Sidebar start
     ***********************************-->
     <div th:replace="~{component/sidebar}"></div>
-    <!--**********************************
-        Sidebar end
-    ***********************************-->
 
-    <!--**********************************
-        Content body start
-    ***********************************-->
+    <div  hidden="" class="form-head mb-4" th:if="${compte != null}">
+        <h2 class="text-black font-w600 mb-0">Dashboard</h2>
+        <input type="hidden" id="numComptes" th:value="${compte.num_cpt}" />
+    </div>
+
+
     <div class="content-body default-height">
         <!-- row -->
         <div class="container-fluid">
@@ -130,85 +133,165 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8">
-                            <div class="card-bx stacked">
+                        <div class="col-xl-8 col-lg-6 col-md-7 col-sm-8 my-3">
+                            <div class="card-bx mb-0">
                                 <img src="images/card/card1.png" alt="">
-                                <div class="card-info text-white" th:if="${compte != null}">
-                                    <p class="mb-1">Solde</p>
-                                    <h2 id="soldeCompteUpdate" class="fs-36 text-white mb-sm-4 mb-3" ></h2>
+                                <div class="card-info text-white">
+                                    <p class="mb-1">Main Balance</p>
+                                    <h2 class="fs-36 text-white mb-sm-4 mb-3">$673,412.66</h2>
                                     <div class="d-flex align-items-center justify-content-between mb-sm-5 mb-3">
                                         <img src="images/dual-dot.png" alt="" class="dot-img">
-                                        <h4 class="fs-20 text-white mb-0" th:text="${formattedAccountNumber}">**** **** **** 1234</h4>
-                                        <input type="hidden" id="numCptt" th:value="${compte.num_cpt}" />
+                                        <h4 class="fs-20 text-white mb-0">**** **** **** 1234</h4>
                                     </div>
                                     <div class="d-flex">
                                         <div class="me-5">
-                                            <p class="fs-14 mb-1 op6">Date</p>
-                                            <span th:text="${compte.date_creation}">08/21</span>
+                                            <p class="fs-14 mb-1 op6">VALID THRU</p>
+                                            <span>08/21</span>
                                         </div>
                                         <div>
-                                            <p class="fs-14 mb-1 op6">Nom et Prenoms</p>
-                                            <span th:text="${user.nom + ' ' + user.prenoms}">Franklin Jr.</span>
+                                            <p class="fs-14 mb-1 op6">CARD HOLDER</p>
+                                            <span>Franklin Jr.</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-8">
-                            <div class="card">
-                                <div class="card-body">
-                                    <a class="btn btn-primary rounded me-2" href="/depot">EFFECTUER DEPOT</a>
-                                    <a class="btn btn-primary rounded" href="#">PAIEMENT SERVICES</a>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="row">
-
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-header d-block d-sm-flex border-0">
                                     <div class="me-3">
-                                        <h4 class="fs-20 text-black">Historique des Transactions</h4>
-                                        <p class="mb-0 fs-13">Consulte tes transactions</p>
+                                        <h4 class="fs-20 text-black">Hist</h4>
                                     </div>
-                                    <div class="card-action card-tabs d-inline-block mt-3 mt-sm-0">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active"  href="/all_transac" >Voir plus</a>
-                                            </li>
-                                        </ul>
+                                    <div class="card-action card-tabs mt-3 mt-sm-0">
+                                        <div class="nav-scroller">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-bs-toggle="tab" href="#january" role="tab">Jan</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#february" role="tab">Fév</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#march" role="tab">Mar</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#april" role="tab">Avr</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#may" role="tab">Mai</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#june" role="tab">Juin</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#july" role="tab">Juil</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#august" role="tab">Aoû</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#september" role="tab">Sep</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#october" role="tab">Oct</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#november" role="tab">Nov</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#december" role="tab">Déc</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-body tab-content p-0">
-                                    <div class="tab-pane active show fade" id="monthly" role="tabpanel">
+                                    <div class="tab-pane active show fade" id="january" role="tabpanel">
                                         <div class="table-responsive">
-                                            <table class="table table-responsive-md card-table previous-transactions">
-                                                <tbody id="transactionTableBody">
-                                                <!-- Les transactions seront ajoutées ici dynamiquement -->
-                                                </tbody>
+                                            <table
+                                                    class="table table-responsive-md card-table previous-transactions">
+                                                <tbody id="january-transactions"></tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="Weekly" role="tabpanel">
+                                    <div class="tab-pane" id="february" role="tabpanel">
                                         <div class="table-responsive">
                                             <table class="table card-table previous-transactions">
-                                                <tbody>
-                                                <!-- Weekly transactions go here -->
-                                                </tbody>
+                                                <tbody id="february-transactions"></tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="Today" role="tabpanel">
+                                    <div class="tab-pane" id="march" role="tabpanel">
                                         <div class="table-responsive">
                                             <table class="table card-table previous-transactions">
-                                                <tbody>
-                                                <!-- Affichage des transaction ici -->
-                                                </tbody>
+                                                <tbody id="march-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="april" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="april-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="may" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="may-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="june" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="june-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="july" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="july-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="august" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="august-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="september" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="september-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="october" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="october-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="november" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="november-transactions"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="december" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table card-table previous-transactions">
+                                                <tbody id="december-transactions"></tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -270,7 +353,7 @@
 <script src="js/deznav-init.js"></script>
 <script src="js/demo.js"></script>
 <script src="js/styleSwitcher.js"></script>
-<script src="js/user.js"></script>
+<script src="js/transaction.js"></script>
 
 </body>
 

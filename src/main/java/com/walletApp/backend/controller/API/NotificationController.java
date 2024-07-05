@@ -7,6 +7,7 @@ import com.walletApp.backend.service.NotificationService;
 import com.walletApp.backend.service.TransactionService;
 import com.walletApp.backend.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,5 +48,12 @@ public class NotificationController {
     public ResponseEntity<Void> validateTransaction(@PathVariable int transactionId) {
         transactionService.validateTransaction(transactionId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/cancel/{transactionId}")
+    public ResponseEntity<Void> cancelTransaction(@PathVariable int transactionId) {
+            transactionService.cancelTransaction(transactionId);
+            return ResponseEntity.noContent().build();
+
     }
 }

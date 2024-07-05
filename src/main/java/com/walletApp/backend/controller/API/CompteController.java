@@ -59,15 +59,14 @@ public class CompteController {
     }
 
 
-    @PostMapping("/{userId}") // Assurez-vous que l'annotation est PostMapping
+    @PostMapping("/{userId}")
     public ResponseEntity<Compte> createCompte(@PathVariable int userId, @RequestBody Compte compte) {
-        // Vérifiez que l'ID de l'utilisateur est valide
+
         if (userId <= 0) {
             return ResponseEntity.badRequest().build();
         }
 
-        // Vous pouvez maintenant utiliser l'ID de l'utilisateur pour associer le compte
-        // à cet utilisateur lors de sa création
+
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setId_user(userId);
         compte.setUser(utilisateur);
@@ -97,7 +96,7 @@ public class CompteController {
     @PostMapping("/depot")
     public boolean depot(@RequestParam String cpt_exp, @RequestParam String cpt_des, @RequestParam Double montant) {
 
-        boolean result = service.actualiseSoldCompte(cpt_exp, montant, false) ? service.actualiseSoldCompte(cpt_des, montant, true) : false;
+        boolean result = service.actualiseSoldCompte(cpt_exp, montant, false) && service.actualiseSoldCompte(cpt_des, montant, true);
         if (result) {
 
             Optional<Compte> dest = service.getCompteById(cpt_des);
@@ -105,6 +104,13 @@ public class CompteController {
             Optional<Status> st = statusService.findById(1);
             Optional<TypeCpt> tc = typeCompteService.getTypeCptById(2);
             Optional<TypeTransaction> tt = typeTransactionService.findById(1);
+
+            if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
+                System.out.println(dest.get().getNum_cpt());
+                System.out.println(exp.get().getNum_cpt());
+
+               System.out.println("ta mere");
+            }
 
             LocalDate dateCreation = LocalDate.now();
             Double frais = montant * 0.1;
@@ -129,23 +135,40 @@ public class CompteController {
 
     @PostMapping("/transfer")
     public ResponseEntity<Map<String, String>> transfer(@RequestParam String sourceCompte, @RequestParam String destinationCompte, @RequestParam Double montant) {
+        Map<String, String> response = new HashMap<>();
+
+        // Vérifier les paramètres reçus
+        if (sourceCompte == null || sourceCompte.isEmpty() || destinationCompte == null || destinationCompte.isEmpty() || montant == null || montant <= 0) {
+            response.put("message", "Données invalides.");
+            return ResponseEntity.badRequest().body(response);
+        }
+
         boolean result = service.transfererFonds(sourceCompte, destinationCompte, montant);
+
         if (result) {
             Optional<Compte> dest = service.getCompteById(destinationCompte);
             Optional<Compte> exp = service.getCompteById(sourceCompte);
             Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
             Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 2 means transfer
-            Optional<TypeTransaction> tt = typeTransactionService.findById(3); //
+            Optional<TypeTransaction> tt = typeTransactionService.findById(22);
+
+            if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
+                System.out.println(dest.get().getNum_cpt());
+                System.out.println(exp.get().getNum_cpt());
+
+                response.put("message", "Le transfert a échoué en raison de données invalides.");
+                return ResponseEntity.badRequest().body(response);
+            }
 
             LocalDate dateCreation = LocalDate.now();
             Double frais = montant * 0.1;
 
             Transaction transaction = new Transaction();
-            transaction.setCpt_dest(dest.orElseGet(null));
-            transaction.setCpt_exp(exp.orElseGet(null));
-            transaction.setStatus(st.orElseGet(null));
-            transaction.setLieu(tc.orElseGet(null));
-            transaction.setTypeTransaction(tt.orElseGet(null));
+            transaction.setCpt_dest(dest.get());
+            transaction.setCpt_exp(exp.get());
+            transaction.setStatus(st.get());
+            transaction.setLieu(tc.get());
+            transaction.setTypeTransaction(tt.get());
             transaction.setDate_trans(Date.valueOf(dateCreation));
             transaction.setTime_trans(Time.valueOf(LocalTime.now()));
             transaction.setFrais_trans(frais);
@@ -153,15 +176,45 @@ public class CompteController {
 
             transactionService.save(transaction);
 
-            Map<String, String> response = new HashMap<>();
             response.put("message", "Le transfert a été effectué avec succès.");
             return ResponseEntity.ok(response);
         } else {
-            Map<String, String> response = new HashMap<>();
+            Optional<Compte> dest = service.getCompteById(destinationCompte);
+            Optional<Compte> exp = service.getCompteById(sourceCompte);
+            Optional<Status> st = statusService.findById(2); // Assume status 1 means successful
+            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 2 means transfer
+            Optional<TypeTransaction> tt = typeTransactionService.findById(22);
+
+            if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
+                System.out.println(dest.get().getNum_cpt());
+                System.out.println(exp.get().getNum_cpt());
+
+                response.put("message", "Le transfert a échoué en raison de données invalides.");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            LocalDate dateCreation = LocalDate.now();
+            Double frais = montant * 0.1;
+
+            Transaction transaction = new Transaction();
+            transaction.setCpt_dest(dest.get());
+            transaction.setCpt_exp(exp.get());
+            transaction.setStatus(st.get());
+            transaction.setLieu(tc.get());
+            transaction.setTypeTransaction(tt.get());
+            transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setTime_trans(Time.valueOf(LocalTime.now()));
+            transaction.setFrais_trans(frais);
+            transaction.setMontant_trans(montant);
+
+            transactionService.save(transaction);
+
             response.put("message", "Le transfert a échoué.");
             return ResponseEntity.badRequest().body(response);
         }
     }
+
+
 
 
     @GetMapping("/verifier/{numeroCompte}")
@@ -187,7 +240,10 @@ public class CompteController {
         Optional<Compte> exp = service.getCompteById(cpt_exp);
         Optional<Compte> dest = service.getCompteById(cpt_des);
 
+
         if (!exp.isPresent() || !dest.isPresent()) {
+            System.out.println(exp.get().getNum_cpt());
+            System.out.println(dest.get().getNum_cpt());
             Map<String, String> response = new HashMap<>();
             response.put("message", "Un ou les deux comptes n’existent pas . ");
             return ResponseEntity.badRequest().body(response);
@@ -225,7 +281,7 @@ public class CompteController {
         transactionService.save(transaction);
 
 
-        notificationService.createNotification(dest.get().getUser(), "Veillez confirmer le retrait en attente de "+montant+" XOF de "+exp.get().getAgence().getLib_agence()+" ", transaction);
+        notificationService.createNotification(dest.get().getUser(), "Confirmer le retrait de "+montant+" XOF de "+exp.get().getAgence().getLib_agence()+" en attente", transaction);
 
         Map<String, String> response = new HashMap<>();
         response.put("message", "Retrait en attente de confirmation de "+ dest.get().getUser().getNom() + " "+dest.get().getUser().getPrenoms());

@@ -68,8 +68,24 @@ public class TransactionService {
         notifRepository.save(notification);
     }
 
-    public List<Transaction> getTransactionsByUserId(int userId) {
-        return transactionRepository.findTransactionsByUserId(userId);
+    public void cancelTransaction(int transactionId) {
+        Transaction transaction = transactionRepository.findById(transactionId)
+                .orElseThrow(() -> new RuntimeException("Aucune transaction trouvée"));
+
+        // Mettre à jour le statut de la transaction à un statut annulé (2)
+        Optional<Status> cancelledStatus = statusService.findById(2);
+        transaction.setStatus(cancelledStatus.orElseThrow(() -> new RuntimeException("Status non trouvé")));
+
+        transactionRepository.save(transaction);
+
+        Notification notification = notifRepository.findByTransaction(transaction)
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
+        notification.setRead(true);
+        notifRepository.save(notification);
+    }
+
+    public List<Transaction> getTransactionsByAccountId(String accountId) {
+        return transactionRepository.findTransactionsByAccountId(accountId);
     }
 
 

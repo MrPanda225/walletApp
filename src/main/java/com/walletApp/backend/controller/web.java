@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.walletApp.backend.config.AccountNumberGenerator.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Controller
@@ -66,6 +68,29 @@ public class web {
         return helpFunction(model,"depot.html");
     }
 
+    @GetMapping("/all_transaction")
+    public String all_transaction(Model model) {
+        return helpFunction(model,"all_transaction.html");
+    }
+
+    @GetMapping("/all_transac")
+    public String all_transac(Model model) {
+        return helpFunction(model,"all_transac.html");
+    }
+
+    @GetMapping("/detail_trans")
+    public String detailTrans(@RequestParam("id_trans") int idTrans, Model model) {
+        Optional<Transaction> transaction = transactionService.findById(idTrans);
+        System.out.println(idTrans);
+        if (transaction.isPresent()) {
+            model.addAttribute("transaction", transaction.get());
+            return helpFunction(model, "detail_trans.html");
+        } else {
+            return "redirect:/all_transaction";
+        }
+    }
+
+
     private String helpFunction(Model model, String url) {
 
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
@@ -77,8 +102,9 @@ public class web {
 
         utilisateur = utilisateurService.findUserWithAccounts(utilisateur.getId_user());
 
-        List<Transaction> transactions = transactionService.getTransactionsByUserId(utilisateur.getId_user());
-        model.addAttribute("transactions", transactions);
+
+//        List<Transaction> transactions = transactionService.getTransactionsByAccountId(String.valueOf(utilisateur.getId_user()));
+//        model.addAttribute("transactions", transactions);
 
         String photoUrl = utilisateur.getPhotoUrl();
         if (photoUrl == null || photoUrl.isEmpty()) {

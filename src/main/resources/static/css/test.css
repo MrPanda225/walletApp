@@ -1,0 +1,13 @@
+ .nav-scroller {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-tabs {
+            display: inline-flex;
+        }
+
+        .nav-tabs .nav-item {
+            display: inline-block;
+            white-space: nowrap;
+        }

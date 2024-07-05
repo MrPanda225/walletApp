@@ -30,6 +30,10 @@ $(document).ready(function() {
         var cptDes = $('#num_cpt').val(); // Ensure this gets the correct destination account number
         var montant = $('#montant').val();
 
+        console.log(cptExp)
+          console.log(cptDes)
+            console.log(montant)
+
         $.ajax({
             url: 'http://localhost:8080/api/compte/retrait',
             type: 'POST',
