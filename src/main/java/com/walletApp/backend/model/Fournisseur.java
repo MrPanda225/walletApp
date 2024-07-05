@@ -18,6 +18,8 @@ public class Fournisseur {
 
     private String lib_fournisseur;
 
+    private String cpt_fournisseur;
+
     @OneToMany(mappedBy = "fournisseur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Services> servicesFournis;

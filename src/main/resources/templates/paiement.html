@@ -188,14 +188,21 @@
                                                                     <div class="input-group">
                                                                         <input type="text"  id="numeroCompte" class="form-control solid">
 
-                                                                        <button class="btn btn-secondary btn-sm"
+                                                                        <button class="btn btn-primary btn-sm"
                                                                                 type="button"  onclick="verifierCompte()">VERIFIER COMPTE</button>
                                                                     </div>
 
                                                                 </div>
                                                                 <div id="resultMessage" class="mt-2"></div>
                                                                 <div id="montantSection" style="display: none;"></div>
-                                                                <button type="button" class="btn btn-secondary btn-sm" id="validerButton">Valider</button>
+                                                                <button type="button" class="btn btn-primary btn-sm" id="validerButton">Valider</button>
+
+                                                                <div hidden="" id="affichageInfos">
+                                                                    <p id="montantAffiche"></p>
+                                                                    <p id="cptFournisseurAffiche"></p>
+                                                                    <p id="sourceCompteAffiche"></p>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </li>

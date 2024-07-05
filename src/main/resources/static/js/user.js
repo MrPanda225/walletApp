@@ -135,8 +135,17 @@ $(document).ready(function() {
          pageTransactions.forEach(function(transaction) {
              var cptExp = transaction.cpt_exp;
              var cptDest = transaction.cpt_dest;
+             console.log(cptDest)
 
-             var destinataire = cptDest.user ? `Destinataire: ${cptDest.user.nom} ${cptDest.user.prenoms}` : `Destinataire: ${cptDest.agence.lib_agence}`;
+             var destinataire = '';
+             if (cptDest.user) {
+                 destinataire = `Destinataire: ${cptDest.user.nom} ${cptDest.user.prenoms}`;
+             } else if (cptDest.fournisseur) {
+                 destinataire = `Destinataire: ${cptDest.fournisseur.lib_fournisseur}`;
+             } else {
+                 destinataire = `Destinataire: ${cptDest.agence.lib_agence}`;
+             }
+
              var expediteur = cptExp.user ? `Expéditeur: ${cptExp.user.nom} ${cptExp.user.prenoms}` : `Expéditeur: ${cptExp.agence.lib_agence}`;
 
              var statusClass = '';
@@ -184,6 +193,7 @@ $(document).ready(function() {
      function fetchTransactions() {
          $.get("/api/transactions/account/" + accountId, function(data) {
              transactions = data.sort((a, b) => b.id_trans - a.id_trans);
+             console.log(transactions)
              currentPage = 1;
              renderTablePage();
          });

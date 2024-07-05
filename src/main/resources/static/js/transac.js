@@ -18,12 +18,14 @@ $(document).ready(function() {
             }
 
             // Déterminer le nom du destinataire
-            var destinataire = '';
-            if (cptDest.user) {
-                destinataire = `${cptDest.user.nom} ${cptDest.user.prenoms}`; // Si le destinataire est un utilisateur
-            } else if (cptDest.agence) {
-                destinataire = `Agence: ${cptDest.agence.lib_agence}`; // Si le destinataire est une agence
-            }
+           var destinataire = '';
+                        if (cptDest.user) {
+                            destinataire = `Destinataire: ${cptDest.user.nom} ${cptDest.user.prenoms}`;
+                        } else if (cptDest.fournisseur) {
+                            destinataire = `Destinataire: ${cptDest.fournisseur.lib_fournisseur}`;
+                        } else {
+                            destinataire = `Destinataire: ${cptDest.agence.lib_agence}`;
+                        }
 
              var statusClass = '';
                                 var iconSvg = '';

@@ -87,6 +87,25 @@ public class CompteService {
         return false;
     }
 
+    public boolean transferer(String compteSourceNumero, String compteDestinationNumero, double montant) {
+        Optional<Compte> compteSourceOptional = getCompteById(compteSourceNumero);
+        Optional<Compte> compteDestinationOptional = getCompteById(compteDestinationNumero);
+
+        if (compteSourceOptional.isPresent() && compteDestinationOptional.isPresent()) {
+            Compte compteSource = compteSourceOptional.get();
+            Compte compteDestination = compteDestinationOptional.get();
+
+            if (compteSource.getSolde() >= montant) {
+                compteSource.setSolde(compteSource.getSolde() - montant);
+               // compteDestination.setSolde(compteDestination.getSolde() + montant);
+                repository.save(compteSource);
+                repository.save(compteDestination);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Compte> getByTypeCpt(TypeCpt typeCpt){
         return repository.findByTypecpt(typeCpt);
     }

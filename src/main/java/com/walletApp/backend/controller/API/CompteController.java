@@ -37,6 +37,9 @@ public class CompteController {
     private TransactionService transactionService;
 
     @Autowired
+    private FrsService frsService;
+
+    @Autowired
     private TypeTransactionService typeTransactionService;
 
     @GetMapping
@@ -216,6 +219,93 @@ public class CompteController {
             return ResponseEntity.badRequest().body(response);
         }
     }
+
+    @PostMapping("/paiementfrs")
+    public ResponseEntity<Map<String, String>> paiementFournisseur(
+            @RequestParam String sourceCompte,
+            @RequestParam String destCompte,
+            @RequestParam Double montant) {
+        Map<String, String> response = new HashMap<>();
+        System.out.println("etape 1 "+ montant );
+        // Vérifier les paramètres reçus
+        if (sourceCompte == null || sourceCompte.isEmpty() || destCompte == null || destCompte.isEmpty() || montant == null || montant <= 0) {
+            System.out.println("etape 1.5");
+            System.out.println(sourceCompte+" "+destCompte+" "+montant);
+            response.put("message", "Données invalides.");
+            return ResponseEntity.badRequest().body(response);
+        }
+        System.out.println("etape 2" +montant);
+
+        boolean result = service.transferer(sourceCompte, destCompte, montant);
+
+       // System.out.println("etape 3 "+sourceCompte+" "+destCompte+ " "+montant);
+
+        if (result) {
+            Optional<Compte> dest = service.getCompteById(destCompte);
+            Optional<Compte> exp = service.getCompteById(sourceCompte);
+            Optional<Status> st = statusService.findById(1); // Assume status 1 means successful
+            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(3); // Assume type 3 means fournisseur payment
+            Optional<TypeTransaction> tt = typeTransactionService.findById(41); // Assume type 3 means fournisseur payment
+
+            System.out.println("etape 4");
+
+            if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
+                response.put("message", "Le paiement a échoué en raison de données invalides.");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            LocalDate dateCreation = LocalDate.now();
+            Double frais = montant * 0.1;
+
+            Transaction transaction = new Transaction();
+            transaction.setCpt_dest(dest.get());
+            transaction.setCpt_exp(exp.get());
+            transaction.setStatus(st.get());
+            transaction.setLieu(tc.get());
+            transaction.setTypeTransaction(tt.get());
+            transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setTime_trans(Time.valueOf(LocalTime.now()));
+          //  transaction.setFrais_trans(frais);
+            transaction.setMontant_trans(montant);
+
+            transactionService.save(transaction);
+
+            response.put("message", "Le paiement au fournisseur a été effectué avec succès.");
+            return ResponseEntity.ok(response);
+        } else {
+            Optional<Compte> dest = service.getCompteById(destCompte);
+            Optional<Compte> exp = service.getCompteById(sourceCompte);
+            Optional<Status> st = statusService.findById(2); // Assume status 2 means failed
+            Optional<TypeCpt> tc = typeCompteService.getTypeCptById(1); // Assume type 1 means failed
+            Optional<TypeTransaction> tt = typeTransactionService.findById(41); // Assume type 22 means failed transaction
+
+            if (dest.isEmpty() || exp.isEmpty() || st.isEmpty() || tc.isEmpty() || tt.isEmpty()) {
+                response.put("message", "Le paiement a échoué en raison de données invalides.");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            LocalDate dateCreation = LocalDate.now();
+            Double frais = montant * 0.1;
+
+            Transaction transaction = new Transaction();
+            transaction.setCpt_dest(dest.get());
+            transaction.setCpt_exp(exp.get());
+            transaction.setStatus(st.get());
+            transaction.setLieu(tc.get());
+            transaction.setTypeTransaction(tt.get());
+            transaction.setDate_trans(Date.valueOf(dateCreation));
+            transaction.setTime_trans(Time.valueOf(LocalTime.now()));
+            transaction.setFrais_trans(frais);
+            transaction.setMontant_trans(montant);
+
+            transactionService.save(transaction);
+
+            response.put("message", "Le paiement au fournisseur a échoué.");
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+
 
 
     @GetMapping("/bytypcpt/{pk}/")
