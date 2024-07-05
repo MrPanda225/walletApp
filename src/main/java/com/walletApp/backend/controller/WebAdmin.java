@@ -21,6 +21,9 @@ public class WebAdmin {
     private CompteService compteService;
 
     @Autowired
+    private TransactionService transactionService;
+
+    @Autowired
     private HttpSession session;
 
     @GetMapping("/administration")
@@ -83,7 +86,9 @@ public class WebAdmin {
 
         if (cpt != null && cpt.getTypecpt().getId_type_cpt() == 2){
             Agence agence = (Agence) session.getAttribute("agence");
-
+            List<Transaction> trs = transactionService.getTransactionsByAccountId(cpt.getNum_cpt());
+            model.addAttribute("size_transactions", trs.size());
+            model.addAttribute("list_transaction", trs);
             model.addAttribute("agence" ,agence);
             model.addAttribute("exp", cpt.getNum_cpt());
             model.addAttribute("cpt", cpt);

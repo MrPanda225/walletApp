@@ -36,6 +36,16 @@
     <![endif]-->
 </head>
 <style>
+    .transactions-list {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            height: 100vh;
+        }
+        .transactions-list {
+            overflow-y: auto;
+            max-height: 400px; /* Adjust based on your design */
+        }
     .user-info {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
@@ -139,11 +149,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-md-flex align-items-center">
-                                <div class="agence-info card mt-4 p-3" th:if="${agence != null}">
-                                    <h4 class="card-title">Informations de l'agence</h4>
-                                    <p class="mb-1"><strong>Nom:</strong> <span th:text="${agence.getLib_agence()}"></span></p>
-                                    <p class="mb-1"><strong>Localisation:</strong> <span th:text="${agence.getLocalisation()}"></span></p>
-                                    <p class="mb-1"><strong>Solde:</strong> <span th:text="${cpt.getSolde() + ' XOF'}"></span></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="agence-info card mt-4 p-3" th:if="${agence != null}">
+                                            <h4 class="card-title">Informations Agence</h4>
+                                            <p class="mb-1"><strong>Nom:</strong> <span th:text="${agence.getLib_agence()}"></span></p>
+                                            <p class="mb-1"><strong>Localisation:</strong> <span th:text="${agence.getLocalisation()}"></span></p>
+                                            <p class="mb-1"><strong>Solde:</strong> <span th:text="${cpt.getSolde() + ' XOF'}"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div th:if="${user != null}" class="user-info card mt-4 p-3">
                                     <h4 class="card-title">Informations de l'utilisateur</h4>
@@ -151,6 +165,39 @@
                                     <p class="mb-1">Prénom: <span th:text="${user.getPrenoms()}"></span></p>
                                     <p class="mb-1">Fonction: <span class="function" th:text="${tUserLib}"></span></p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" th:if="${agence != null}" >
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="">
+                                <h4 class="card-title">List des Transactions</h4>
+                                <table id="transactionsTable" class="table table-striped table-bordered " >
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Montant</th>
+                                        <th>Frais</th>
+                                        <th>Heure</th>
+                                        <th>Type Transaction</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="transaction : ${list_transaction}">
+                                        <td th:text="${transaction.getDate_trans()}"></td>
+                                        <td th:text="${transaction.getMontant_trans()}"></td>
+                                        <td th:text="${transaction.getFrais_trans()}"></td>
+                                        <td th:text="${transaction.getTime_trans()}"></td>
+                                        <td th:text="${transaction.getTypeTransaction().getLib_type_trans()}"></td>
+                                        <td th:text="${transaction.getStatus().getLib_status()}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -201,5 +248,12 @@
 <script src="/admin/assets/libs/flot/jquery.flot.crosshair.js"></script>
 <script src="/admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="/admin/dist/js/pages/chart/chart-page-init.js"></script>
+<script src="/admin/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+<script src="/admin/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+<script src="/admin/assets/extra-libs/DataTables/datatables.min.js"></script><script>
+    $(document).ready(function() {
+        $('#transactionsTable').DataTable();
+    });
+</script>
 </body>
 </html>
